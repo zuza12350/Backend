@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  db:
+    restart: always
+    image: postgres:13
+    ports:
+      - 8900:5432
+    environment:
+      POSTGRES_DB: pjwstk
+      POSTGRES_USER: pjwstk
+      POSTGRES_PASSWORD: pjwstk!123

@@ -1,0 +1,266 @@
+{
+  "guns": [
+    {
+      "MachineGuns": {
+        "description": "Karabin maszynowy to zazwyczaj samoczynna (strzelająca jedynie ogniem ciągłym) broń wsparcia ogniowego pododdziału zasilana nabojem karabinowym (ręczne, lekkie i ciężkie karabiny maszynowe), wielkokalibrowym (wielkokalibrowe karabiny maszynowe) lub pośrednim (karabinki maszynowe). Spotykane są również nieliczne samoczynno samopowtarzalne karabiny maszynowe (wyposażone w przełącznik rodzaju ognia umożliwiający strzelanie ogniem pojedynczym i ciągłym).",
+        "kinds": [
+          {
+          "Ciężkie karabiny maszynowe (ckm)":{
+              "description": "Masa broni do ok. 20kg. Użycie wymaga zastosowania masywnej postawy oraz w niektórych przypadkach chłodzenia cieszą. Przeznaczony jest do niszczenia grupowych celów żywych, środków ogniowych, lekko opancerzonego sprzętu i nisko lecących celów powietrznych.",
+              "kinds": [
+                {
+                  "name": "Browning M2",
+                  "description": "Znany również jako .50 BMG, to karabin maszynowy, którego konstrukcja sięga  końca I wojny światowej . Jest owocem pracy Johna Mosesa Browninga i wykazuje niezwykłą długowieczność. Zna on dużą liczbę oznaczeń i jest podstawową bronią miotającą potężną amunicję 12,7 mm,  która jest standardem NATO.",
+                  "caliber": "7.62 mm",
+                  "barrelLength": "1143 mm",
+                  "weight": "38.1 kg, z ładunkiem 72.62 kg",
+                  "velocityOfBullets": "500 strz./min",
+                  "magazine": "bębnowy (75 nabojów)\nłukowy (40 nabojów)",
+                  "bullet": "12.7 × 99 mm NATO",
+                  "range": "1200 m",
+                  "photo": "https://upload.wikimedia.org/wikipedia/commons/9/91/M2_Browning%2C_Mus%C3%A9e_de_l%27Arm%C3%A9e.jpg",
+                  "url": "https://www.youtube.com/watch?v=yuZ5VrLQ1ek"
+                }
+
+              ]
+            }
+          },{
+            "Lekkie karabiny maszynowe (Ikm)": {
+              "description": "Masa broni do ok. 14 kg, jako podstawa najczęściej stosowany lekki dwójnóg",
+              "kinds": [
+                {
+                  "name": "Lewis",
+                  "description": "Brytyjski karabin maszynowy. Używany głownie podczas I wojny światowej, również przez inne panstwa Ententy.",
+                  "caliber": "7.7 mm",
+                  "barrelLength": " 670 mm",
+                  "weight": "12.25 kg (nienaładowany)",
+                  "velocityOfBullets": "550 strz./min",
+                  "magazine": "talerzowy, 47/97 naboojowy",
+                  "bullet": ".303",
+                  "range": "---",
+                  "photo": "https://upload.wikimedia.org/wikipedia/commons/4/41/Lewis_Gun_%28derivated%29_noBG.png",
+                  "url": "https://www.youtube.com/watch?v=edbDa9knxwE"
+                },
+                {
+                  "name": "Maschinengewehr 08/15",
+                  "description": "Oparty konstrukcyjnie na ciężkim karabinie maszynowym MG08. Opracowany w 1915 r. stał się podstawowym lekkim karabinem maszynowym armii niemieckiej w trakcie I wojny światowej. W mniejszych ilościach wykorzystywany jeszcze przez Wehrmacht podczas II wojny światowej. Używany również w wersji lotniczego karabinu maszynowego jako LMG 08/15. ",
+                  "caliber": "7.92 mm",
+                  "barrelLength": "720 mm",
+                  "weight": "14 kg",
+                  "velocityOfBullets": "450-500 strz./min",
+                  "magazine": "taśma parciana, 100 naboojowa",
+                  "bullet": "7,92 × 57 mm Mauser",
+                  "range": "800 m",
+                  "photo": "https://upload.wikimedia.org/wikipedia/commons/1/1a/2014_06_BLM_Braunschweig_WMDE_noBG.png",
+                  "url": "https://www.youtube.com/watch?v=Y3XTPWnV2rw"
+                }
+              ]
+            }},
+          {
+            "Ręczne karabiny maszynowe (rkm)": {
+              "description": "Masa broni do ok. 10 kg, jako podstawa najczęściej stosowany lekki dwójnóg",
+              "kinds": [
+                {
+                  "name": "RPK",
+                  "description": "W Wojsku Polskim pojawił się w latach 70 XX wieku, zakupiono wówczas około 5 tys. RPK i RPKS. Były używane przez jednostki specjalne i wojska powietrznodesantowe. Dzisiaj niewiele sztuk jest w użyciu w jednostkach powietrznodesantowych, zdecydowana większość pozostaje w magazynach.",
+                  "caliber": "7.62 mm",
+                  "barrelLength": "591 mm",
+                  "weight": "5.0 kg",
+                  "velocityOfBullets": "150-600 strz./min",
+                  "magazine": "bębnowy (75 nabojów)\nłukowy (40 nabojów)",
+                  "bullet": "7.62 x 39 mm wz. 43",
+                  "range": "3000 m",
+                  "photo": "http://opisybroni.pl/wp-content/uploads/2022/01/fa_mg_rpk_p04.jpg",
+                  "url": "https://www.youtube.com/watch?v=_FetaX9ZFYI"
+                },
+                {
+                  "name": "M249 SAW",
+                  "description": "Jest amerykańską odmianą belgijskiego karabinu FN Minimi. Broń służy w Siłach Zbrojnych Stanów Zjednoczonych od połowy lat 80.",
+                  "caliber": "5.56 mm",
+                  "barrelLength": "466 mm",
+                  "weight": "6.83 kg",
+                  "velocityOfBullets": " 750-1100 strz./min",
+                  "magazine": "taśma na 100 lub 200 nabojow, umieszona pod komorą zamkowa",
+                  "bullet": "5,56 x 45 mm NATO",
+                  "range": "2000 m",
+                  "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/PEO_M249_Para_ACOG.jpg/1024px-PEO_M249_Para_ACOG.jpg",
+                  "url": "https://www.youtube.com/watch?v=dCoFvH8zQYI"
+                },
+                {
+                  "name": "MG4",
+                  "description": "Broń lekka, zapewniająca maksymalne bezpieczeństwo użytkowania i niezawodność przy ciężkich warunkach oraz stosowanie amunicji różnych producentów bez potrzeby dostosowywania systemów odprowadzania gazów.",
+                  "caliber": "5.56 mm",
+                  "barrelLength": "1030 mm",
+                  "weight": "8.15 kg",
+                  "velocityOfBullets": " 885 ±65 strz./min",
+                  "magazine": "---",
+                  "bullet": "5,56 x 45 mm",
+                  "range": "2850 m",
+                  "photo": "https://upload.wikimedia.org/wikipedia/commons/5/58/HK_MG4_01_noBG.png",
+                  "url": "https://www.youtube.com/watch?v=JIgEVfpJ_uA"
+                }
+              ]
+            }},
+          {
+            "Uniwersalne karabiny maszynowe (ukm)": {
+              "description": "Masa zbliżona do lekkich lub ręcznych karabinów maszynowych. W zależności od potrzeb stosowana podstawa ckm-u lub rkm/lkm-u.",
+              "kinds": [
+                {
+                  "name": "AAT M52",
+                  "description": "AAT M52 jest zespołową bronią samoczynną. Odrzucie zamka półswobodnego. Opóźnienie otwarcia dwuczęściowego zamka zapewnia niesymetryczna dźwignia. Mechanizm spustowy umożliwia tylko ogień ciągły. ",
+                  "caliber": "7.5 mm",
+                  "barrelLength": "500 mm",
+                  "weight": "9.15 kg",
+                  "velocityOfBullets": "700 strz./min",
+                  "magazine": "taśma rozsypna",
+                  "bullet": "7.5 x 54 mm",
+                  "range": "800 m",
+                  "photo": "https://upload.wikimedia.org/wikipedia/commons/e/e5/AAT-machine-gun-batey-haosef-1.jpg",
+                  "url": "https://www.youtube.com/watch?v=enpnFLBPRDw"
+                },
+                {
+                  "name": "M60",
+                  "description": "Uniwersalny karabin maszynowy M60 jest zespołową bronią samoczynną. Zasada działania oparta na odprowadzaniu gazów prochowych przez boczny otwór w lufie przy krótkim ruchu tłoka gazowego. Strzał następuje przy otwartym zamku. Broń wyposażona jest w samonastawny regulator gazowy. Ryglowanie przez obrót zamka. Mechanizm spustowy umożliwia tylko ogień ciągły.",
+                  "caliber": "7.62 mm",
+                  "barrelLength": "560 mm",
+                  "weight": "10.51 kg",
+                  "velocityOfBullets": "550 strz./min",
+                  "magazine": "----",
+                  "bullet": "7.62 × 51 mm NATO",
+                  "range": "1000-1800 m",
+                  "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/M60_Medium_Machine_Gun_%287414626098%29.jpg/1024px-M60_Medium_Machine_Gun_%287414626098%29.jpg",
+                  "url": "https://www.youtube.com/watch?v=HtK5gB6po_U"
+                }
+                ]
+            }},
+          {"Wielkokalibrowe karabiny maszynowe (wkm)": {
+              "description": "Zasilane amunicją dużego kalibru (12-20 mm)[2]. Zazwyczaj cięższe od ckm-ów, również wymagające ciężkiej masywnej podstawy.",
+              "kinds": [
+                {
+                  "name": "Besa",
+                  "description": "Brytyjska wersja czechosłowackiego ciężkiego karabinu maszynowego ZB-53 (Model 37). Był używany podczas II wojny światowej jako uzbrojenie brytyjskich czołgów i pojazdów opancerzonych. ",
+                  "caliber": "7.92 mm",
+                  "barrelLength": "736 mm",
+                  "weight": "21.46 kg",
+                  "velocityOfBullets": "500-800 strz./min",
+                  "magazine": "225 naboojowa typu 7.92 mm Mauser, 25 nabojowa typu 15 mm",
+                  "bullet": "7.92 x 57 mm Mauser, 15x104 mm ",
+                  "range": "---",
+                  "photo": "https://upload.wikimedia.org/wikipedia/commons/6/65/Besa_7.62_mm_Makineli_T%C3%BCfek.jpg",
+                  "url": "https://www.youtube.com/watch?v=gZnIvBGgMFU"
+                },
+                {
+                  "name": "",
+                  "description": "Karabin działa na zasadzie odprowadzenia gazów prochowych przez boczny otwór w ściance lufy. Komora gazowa posiada regulator z trzema otworami o różnych średnicach. Zasilany jest z metalowej taśmy elastycznej o ogniwach otwartych i pojemności 50 nabojów. Donośnik jest napędzany przez suwadło. ",
+                  "caliber": "12.7 mm",
+                  "barrelLength": "1066 mm",
+                  "weight": "35.5 kg",
+                  "velocityOfBullets": "550 strz./min",
+                  "magazine": "taśma 50 naboojowa",
+                  "bullet": "12.7 x 108 mm",
+                  "range": "1500-2000 m",
+                  "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/12%2C7-%D0%BC%D0%BC_%D1%81%D1%82%D0%B0%D0%BD%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9_%D0%BF%D1%83%D0%BB%D0%B5%D0%BC%D1%91%D1%82_%D0%94%D0%A8%D0%9A_%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D1%86%D0%B0_1938_%D0%B3%D0%BE%D0%B4%D0%B0_%283-1%29.jpg/1024px-12%2C7-%D0%BC%D0%BC_%D1%81%D1%82%D0%B0%D0%BD%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9_%D0%BF%D1%83%D0%BB%D0%B5%D0%BC%D1%91%D1%82_%D0%94%D0%A8%D0%9A_%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D1%86%D0%B0_1938_%D0%B3%D0%BE%D0%B4%D0%B0_%283-1%29.jpg",
+                  "url": "---"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "ShotGuns": {
+        "description": "przeznaczony dla strzelca wyborowego w celu prowadzenia ognia pojedynczego na dużą odległość, z dużą precyzją, używany do likwidowania pojedynczych, istotnych dla przeciwnika celów (głównie osób), w odległości do kilkuset metrów. Jest to wyselekcjonowany model broni standardowej lub konstrukcja oryginalna przeznaczona wyłącznie do tego celu. Posiada osprzęt umożliwiający precyzyjne prowadzenie ognia na znacznych (do około 1000 m) odległościach (celownik optyczny), także w nocy, z użyciem noktowizora. Broń powtarzalna lub samopowtarzalna, istnieją też modele strzelające ogniem ciągłym (HK G3SG1).",
+        "kinds": [
+          {
+            "name": "M24 SWS",
+            "description": "Przepisowa broń wyborowa Armii Stanów Zjednoczonych. Wersja karabinu Remington 700, zaprojektowana w Remington Arms pod koniec lat 80. M24 SWS jest bronią powtarzalną z zamkiem czterotaktowym. Karabin posiada regulowaną wzdłużnie stopkę kolby oraz celownik optyczny Leupold.\n\nKorpus Piechoty Morskiej Stanów Zjednoczonych używa jako standardowego karabinu snajperskiego innego wariantu Remingtona 700 – M40. M40 ma krótką komorę zamkową, przystosowaną do naboju nie dłuższego niż natowski 7.62x51mm. Dłuższa komora M24 umożliwia strzelanie dłuższym (i silniejszym) nabojem Winchester .300 magnum (7.62x67mm).",
+            "caliber": "7.62 mm",
+            "barrelLength": "610 mm",
+            "weight": "5.49 kg",
+            "velocityOfBullets": "853 m/s",
+            "magazine": "stały, 5 naboojowy",
+            "bullet": "7.62 x 51 mm NATO",
+            "range": "800-2000 m",
+            "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/IDF-M24-SWS-pic001.jpg/1024px-IDF-M24-SWS-pic001.jpg",
+            "url": "https://www.youtube.com/watch?v=l8YOVmFbp9Q"
+          },
+          {
+            "name": "SWD",
+            "description": "Radziecki samopowtarzalny karabin wyborowy skonstruowany w latach 60 XX w. przez Jewgienija Dragunowa.",
+            "caliber": "7.62 mm",
+            "barrelLength": "620 mm",
+            "weight": "4.3 kg",
+            "velocityOfBullets": "780–870 m/s",
+            "magazine": "10 naboojowy",
+            "bullet": "7.62 × 54 mm R",
+            "range": "---",
+            "photo": "https://upload.wikimedia.org/wikipedia/commons/8/8b/SVD_Dragunov.jpg",
+            "url": "https://www.youtube.com/watch?v=2YVjR-AuBHA"
+          },
+          {
+            "name": "Barrett M82A1",
+            "description": "Samopowtarzalny wielkokalibrowy karabin wyborowy skonstruowany w amerykańskiej firmie Barrett we wczesnych latach 80. ",
+            "caliber": ".50 mm (12,7 mm)",
+            "barrelLength": "737 mm 508 mm",
+            "weight": "14 kg",
+            "velocityOfBullets": "854 m/s",
+            "magazine": "pudełkowy, 10 naboojowy",
+            "bullet": "12.7 mm NATO",
+            "range": "1800–2000 m",
+            "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/M82A1_barrett.jpeg/1024px-M82A1_barrett.jpeg",
+            "url": "https://www.youtube.com/watch?v=J3hBmVZgEu8"
+          }
+        ]
+      }
+    },
+    {
+      "pistols": {
+        "description": "Krótka, ręczna broń palna (z wyłączeniem rewolwerów) zasilana najczęściej amunicją pistoletową, rzadziej rewolwerową (słabszą od karabinowej i pośredniej). Pistolety przeznaczone są do walki na krótkim dystansie (do 50 m). Charakteryzują się krótką lufą, małymi gabarytami i chwytem (rękojeścią) przystosowanym do strzelania z jednej ręki. Najpowszechniej stosowane w wojsku, policji i ochronie. Są także popularną bronią sportową.",
+        "kinds": [
+
+          {
+            "name": "Glock 19",
+            "description": "Pistolet z podstawową wersją magazynka o pojemności 15 nabojów. Istnieje możliwość zastosowania magazynka o pojemności 17 lub też 33 nabojów. Model powszechnie używany przez policję i siły zbrojne na całym świecie.",
+            "caliber": "9x19",
+            "barrelLength": "102 mm",
+            "weight": "595 g",
+            "velocityOfBullets": "",
+            "magazine": "pudełkowy, 15 naboojowy",
+            "bullet": "",
+            "range": "50 m",
+            "photo": "https://kolba.pl/media/cache/product_item_photo_browser_b2c/assets/photos/replika-pistolet-asg-glock-19-gen-4-6-mm-cf98c33c212c4fee89020c13ae6f5d86-232f7a58.jpg",
+            "url": "https://www.youtube.com/watch?v=ROHFSEHLRYc"
+          },
+          {
+            "name": "MAG",
+            "description": "Polski pistolet samopowtarzalny. Skonstruowany przez Mariana Gryszkiewicza. Produkowano wersje MAG-95 i MAG-98. Skrót MAG pochodzi od pierwszych liter imienia i nazwiska jego konstruktora, natomiast liczba 95 określa rok, w którym było przewidywane całkowite zakończenie prac nad prototypem.",
+            "caliber": "9 mm",
+            "barrelLength": "115 mm",
+            "weight": "1.1 kg",
+            "velocityOfBullets": "355 m/s",
+            "magazine": "pudełkowy, 15 nab. (MAG 08 15 lub 18 nab.) ",
+            "bullet": "9 x 19 mm Parabellum",
+            "range": "143 m\n160 m (MAG-98C)",
+            "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/MAG-08_PICT0025.jpg/1024px-MAG-08_PICT0025.jpg",
+            "url": "https://www.youtube.com/watch?v=di-ZVM3FaYc"
+          },
+          {
+            "name": "Sig Sauer P210",
+            "description": "Przeznaczony do sportowego, wyczynowego strzelania w konkurencji pistoletu centralnego zapłonu.",
+            "caliber": "9x19 mm",
+            "barrelLength": "104 mm",
+            "weight": "822 g",
+            "velocityOfBullets": "355 m/s",
+            "magazine": "pudełkowy, 8 nabojowy",
+            "bullet": "9 x 19 mm Parabellum",
+            "range": "---",
+            "photo": "https://www.puchacz.net/images/mini/350px_P210%201.jpg",
+            "url": "https://www.youtube.com/watch?v=MFySDAvQG8M"
+          }
+        ]
+      }
+    }
+
+  ]
+}
