@@ -1,9 +1,0 @@
-databaseChangeLog:
-  - changeSet:
-      id: file_holder.sql
-      author: Zuzanna Borkowska
-      sqlFile:
-        relativeToChangelogFile: true
-        stripComments: true
-        splitStatements: false
-        path: file_holder.sql
