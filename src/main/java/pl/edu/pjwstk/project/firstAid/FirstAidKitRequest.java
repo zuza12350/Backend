@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class lifeSupportActionRequest {
-    private String name, description, procedureAlgorithm;
+public class FirstAidKitRequest {
+    private String name, description;
 }
