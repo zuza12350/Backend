@@ -1,0 +1,87 @@
+{
+  "items": [
+    {
+      "id": 0,
+      "name": "podpałka"
+    },
+    {
+      "id": 1,
+      "name": "rozpałka"
+    },
+    {
+      "id": 2,
+      "name": "drewno"
+    },
+    {
+      "id": 3,
+      "name": "latarka"
+    },
+    {
+      "id": 4,
+      "name": "narzędzie wielofunkcyjne"
+    },
+    {
+      "id": 5,
+      "name": "zapas żywności"
+    },
+    {
+      "id": 6,
+      "name": "apteczka"
+    },
+    {
+      "id": 7,
+      "name": "zapałki"
+    },
+    {
+      "id": 8,
+      "name": "lusterko sygnalizacyjne"
+    },
+    {
+      "id": 9,
+      "name": "mapa"
+    },
+    {
+      "id": 10,
+      "name": "kompas"
+    },
+    {
+      "id": 11,
+      "name": "tabletki i filtry do uzdatniania wody"
+    },
+    {
+      "id": 12,
+      "name": "scyzoryk"
+    },
+    {
+      "id": 13,
+      "name": "nóż"
+    }
+  ],
+  "tips": [
+    {
+      "name": "Jak wzniecić ogień bez zapałek, czy zapalniczki",
+      "needed_items": [0, 1, 2, 12],
+      "guide": "Spróbuj wywołać iskrę skrobiąc ostrzem scyzoryka o kawałek krzemienia - twardej, szarej skały, która łatwo pęka.\nUformuj podpałkę w gniazdo wielkości piłki do softballu. Trzymaj krzemień tuż nad podpałką i staraj się kierować w nią iskry. Podsycaj iskrę do płomienia dmuchając na nią delikatnie. W razie potrzeby dodaj rozpałkę i paliwo. Inną metodą jest uzycie szkła powiększającego. Trzymaj soczewkę tak, aby światło słoneczne przechodziło przez nią na punkt w popiele. Następnie poczekaj. I czekaj. I bądźcie cierpliwi. Może to trochę potrwać, ale podpałka w końcu się zadymi, a potem spali. "
+    },
+    {
+      "name": "Przedmioty niezbędne do przetrwania",
+      "needed_items": [3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "guide": ""
+    },
+    {
+      "name": "Sposoby sygnalizacji",
+      "needed_items": [3, 8],
+      "guide": "Wykorzystanie kropek i kresek (alfabetu Morse'a), czyli sygnałów nadawanych za pomocą błysków światła to niezawodna metoda. By zacząć nadawanie, wystarczy latarka lub lusterko sygnalizacyjne i znajomość podstawowych znaków jak np. S.O.S, czyli trzy krótkie, trzy długie i znów trzy krótkie błyśnięcia.\n Za sygnalizator może posłuyć nam własne ciało:ręce uniesione pionowo w górę – kropka\n ramiona uniesione pionowo na boki – kreska\n skrzyżowanie ramion na piersi – rozdzielenie znaków\n skrzyżowanie ramion w dół – rozdzielenie grup znaków\n okrężny ruch ramionami nad głową – pomyłka/powtórz"
+    },
+    {
+      "name": "Jak posługiwać się nożem",
+      "needed_items": [12,13],
+      "guide": "Na początku, warto wspomnieć, że wybór odpowiedniego noża ma znaczenie. Do wyrobu noży używa się dwóch rodzajów stali - węglowej oraz nierdzewnej. My na noże do survivalu polecamy stal węglową. Najważniejszymi cechami, jakie powinien posiadać każdy nóż survivalowy są wytrzymałość czyli dobra udarność i prawidłowe trzymanie ostrości, czyli odporność na ścieranie. Taki nóż tudzież scyzoryk może posłużyć się znakomicie do pozyskania suchego drewna w sytuacjach kryzysowych, które wykorzystamy jako naturalną rozpałkę, pozwoli zbudować prowizoryczne schronienie. Jeżeli chcemy zdecydować się na łowienie ryb, to wtedy możemy go użyć w poszukiwaniu przynęty w postaci robaków.\n\nW bardzo skrajnych sytuacjach awaryjnych możemy też wykorzystując przelotki w nożu zamocować go na końcu kija tworząc prowizoryczną włócznię. Pozwoli nam ona podjąć próbę polowania na ryby czy zwierzynę. Tego typu włócznia może też posłużyć jako narzędzie obronne przed drapieżnikami czy innymi dynamicznymi zagrożeniami.\n\n Nie można także zapominać, że noże do survivalu mogą posłużyć za narzędzie obronne w przypadku zagrożenia w warunkach miejskich, pomogą nam też przeciąć pasy bezpieczeństwa i zbić szybę w przypadku wypadku samochodowego."
+    },
+    {
+      "name": "Przygotuj krótkoterminowe schronienie survivalowe",
+      "needed_items": [],
+      "guide": " Typ schronienia należy dobrać zgodnie z panującymi warunkami oraz przyjętą strategią działania, uzależnioną głównie od posiadanego wyposażenia, faktu działania w pojedynkę bądź w grupie, zdolności do działania, czasu jaki zamierzamy spędzić w bazie ze schronieniem. Najlepszym rozwiązaniem będzie z pewnością skorzystanie z takiego schronienia, do którego wchodzimy „na gotowe”, które wymaga od nas jak najmniej przygotowań i pracy. Chodzi na przykład o zwalone drzewa, czy formę terenową, które tworzą od razu część konstrukcji, na przykład poprzez zapewnienie osłony przed wiatrem.\n Czasami można trafić na szczególnie dogodne miejsce, w którym znajduje się np przewrócony pień, mogący pełnić rolę wiatrochronu i ściany schronienia. Aby było to miejsce do faktycznego odpoczynku należy dodać spadzistą „czapę” wykonaną ze związanych, gęstych iglastych gałęzi, osadzoną na grubych, wystających poziomo korzeniach, która ochroni przed deszczem. Na przeciwko ustawiamy ekran cieplny (odbijający ciepło ogniska palonego w środku) i gotowe. Innym sposobem może być "
+    }
+  ]
+}
