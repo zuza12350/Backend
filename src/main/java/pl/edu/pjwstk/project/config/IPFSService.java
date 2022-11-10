@@ -11,7 +11,7 @@ import lombok.SneakyThrows;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import pl.edu.pjwstk.project.fileModel.FileHolderRepository;
+import pl.edu.pjwstk.project.filelogic.FileHolderRepository;
 
 
 import java.io.*;

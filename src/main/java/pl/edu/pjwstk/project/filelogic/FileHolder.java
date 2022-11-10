@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.fileModel;
+package pl.edu.pjwstk.project.filelogic;
 
 import lombok.Getter;
 import lombok.Setter;

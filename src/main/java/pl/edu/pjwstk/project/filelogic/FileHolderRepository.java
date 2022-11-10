@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.fileModel;
+package pl.edu.pjwstk.project.filelogic;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

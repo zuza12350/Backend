@@ -30,12 +30,9 @@ public class GunRequest {
     @SerializedName("barrelLength")
     @Expose
     private Long  barrelLength;
-    @SerializedName("weight_empty")
+    @SerializedName("weight")
     @Expose
-    private double weight_empty;
-    @SerializedName("weight_loaded")
-    @Expose
-    private double weight_loaded;
+    private double weight;
     @SerializedName("fire_rate")
     @Expose
     private double fire_rate;
