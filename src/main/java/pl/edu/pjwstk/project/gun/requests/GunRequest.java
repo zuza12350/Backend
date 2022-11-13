@@ -33,9 +33,9 @@ public class GunRequest {
     @SerializedName("weight")
     @Expose
     private double weight;
-    @SerializedName("fire_rate")
+    @SerializedName("fireRate")
     @Expose
-    private double fire_rate;
+    private double fireRate;
     @SerializedName("range")
     @Expose
     private Long range;
@@ -48,7 +48,7 @@ public class GunRequest {
     @SerializedName("photo")
     @Expose
     private String photo;
-    @SerializedName("url")
+    @SerializedName("video")
     @Expose
-    private String url;
+    private String video;
 }
