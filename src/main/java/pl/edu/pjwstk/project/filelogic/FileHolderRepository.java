@@ -18,6 +18,9 @@ public interface FileHolderRepository extends JpaRepository<FileHolder,Long> {
     @Query(value = "select file_hash from file_holder where file_name=:fileName",nativeQuery = true)
     String getFileHash(@Param("fileName") String fileName);
 
+    @Query(value = "select case when count(file_name) > 0 then true else false end from file_holder where file_name=:fileName",nativeQuery = true)
+    boolean existsByName(@Param("fileName") String fileName);
+
     @Modifying
     @Query(value = "update file_holder set file_hash=:fileHash where file_name=:fileName",nativeQuery = true)
     @Transactional

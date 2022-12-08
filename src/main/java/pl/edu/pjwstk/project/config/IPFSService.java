@@ -11,6 +11,7 @@ import lombok.SneakyThrows;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import pl.edu.pjwstk.project.exceptions.FileAlreadyExists;
 import pl.edu.pjwstk.project.filelogic.FileHolderRepository;
 
 
@@ -42,13 +43,18 @@ public class IPFSService implements FileServiceImpl {
     @Override
     public String saveFile(String fileName,MultipartFile file) {
         try {
-            InputStream inputStream = new ByteArrayInputStream(file.getBytes());
-            IPFS ipfs = ipfsConfig.ipfs;
+            if(!fileHolderRepository.existsByName(fileName)){
+                InputStream inputStream = new ByteArrayInputStream(file.getBytes());
+                IPFS ipfs = ipfsConfig.ipfs;
 
-            NamedStreamable.InputStreamWrapper is = new NamedStreamable.InputStreamWrapper(inputStream);
-            MerkleNode response = ipfs.add(is).get(0);
-            fileHolderRepository.saveFile(fileName,response.hash.toBase58());
-            return response.hash.toBase58();
+                NamedStreamable.InputStreamWrapper is = new NamedStreamable.InputStreamWrapper(inputStream);
+                MerkleNode response = ipfs.add(is).get(0);
+                fileHolderRepository.saveFile(fileName,response.hash.toBase58());
+                return response.hash.toBase58();
+            }else{
+                throw new FileAlreadyExists();
+            }
+
         } catch (IOException ex) {
             throw new RuntimeException("Error whilst communicating with the IPFS node", ex);
         }
