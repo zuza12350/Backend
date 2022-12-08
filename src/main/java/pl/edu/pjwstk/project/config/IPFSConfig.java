@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.config;
+package pl.edu.pjwstk.project;
 
 import io.ipfs.api.IPFS;
 import lombok.SneakyThrows;
