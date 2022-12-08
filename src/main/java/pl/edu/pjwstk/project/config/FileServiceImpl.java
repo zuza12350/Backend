@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project;
+package pl.edu.pjwstk.project.config;
 
 
 import com.google.gson.JsonObject;

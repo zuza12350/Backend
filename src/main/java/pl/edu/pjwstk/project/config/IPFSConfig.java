@@ -1,6 +1,8 @@
-package pl.edu.pjwstk.project;
+package pl.edu.pjwstk.project.config;
 
 import io.ipfs.api.IPFS;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+@Getter @Setter
 public class IPFSConfig {
     IPFS ipfs;
     @SneakyThrows
@@ -18,11 +21,4 @@ public class IPFSConfig {
         ipfs = new IPFS("localhost", 5001);
     }
 
-
-    public IPFS getIpfs() {
-        return ipfs;
-    }
-    public void setIpfs(IPFS ipfs) {
-        this.ipfs = ipfs;
-    }
 }
