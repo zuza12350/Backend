@@ -1,12 +1,13 @@
-package pl.edu.pjwstk.project.firstAid;
+package pl.edu.pjwstk.project.firstaid;
 
-import com.google.gson.JsonArray;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
 public class LifeSupportActionRequest {
     private String name, description ;
-    private JsonArray procedure;
+    private List<String> procedure;
 }

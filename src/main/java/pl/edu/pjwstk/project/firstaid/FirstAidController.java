@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.firstAid;
+package pl.edu.pjwstk.project.firstaid;
 
 import com.google.gson.JsonObject;
 import lombok.AllArgsConstructor;
