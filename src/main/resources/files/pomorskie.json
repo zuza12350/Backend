@@ -1,0 +1,19 @@
+{
+  "location_points": [
+    {
+      "name": "Szpital",
+      "latitude": 54.444444,
+      "longitude": 18.555555
+    },
+    {
+      "name": "Zbiórka żywności",
+      "latitude": 54.333333,
+      "longitude": 18.666666
+    },
+    {
+      "name": "Bunkier",
+      "latitude": 54.222222,
+      "longitude": 18.777777
+    }
+  ]
+}
