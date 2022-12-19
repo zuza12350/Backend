@@ -1,7 +1,7 @@
 {
   "kits": {
     "description": "Apteczka jest podstawowym źródłem różnych leków, środków opatrunkowych czy przyborów potrzebnych do niesienia pomocy sobie, bądź innym. W Polsce nie ma przepisów, które określają wyposażenie apteczek, lecz najczęściej używa się normy DIN, którą wzoruję się też inne kraje Unii Europejskiej.",
-    "items" : {
+    "items": {
       "basic": [
         "plaster",
         "opaska elastyczna",
@@ -180,7 +180,7 @@
           "leki na kaszel",
           "leki uspokajające",
           "leki na ból brzucha"
-          ]
+        ]
       },
       {
         "name": "Apteczka przemysłowa",
@@ -214,7 +214,7 @@
           "preparaty na odporność",
           "środki na oparzenia",
           "maść na ukąszenia"
-          ]
+        ]
       }
     ]
   },
@@ -283,7 +283,33 @@
           "Unieś stopy ofiary, chyba że ma uraz głowy, szyi lub pleców",
           "Podać tlen, jeśli jest dostępny",
           "Podać wszelkie przepisane leki na wstrząs, jeśli są dostępne",
-          "Monitoruj parametry życiowe poszkodowanego i natychmiast szukaj pomocy medycznej, jeśli jego stan się pogorszy".
+          "Monitoruj parametry życiowe poszkodowanego i natychmiast szukaj pomocy medycznej, jeśli jego stan się pogorszy"
+        ]
+      },
+      {
+        "name": "Ratowanie tonącego",
+        "description": "Zespół czynności stosowanych w sytuacji, gdy osoba tonie lub jest w niebezpieczeństwie utonięcia.",
+        "procedure": [
+          "Oceń swoje bezpieczeństwo – sprawdź, czy jesteś w stanie bezpiecznie dotrzeć do osoby tonącej, bez ryzyka utonięcia",
+          "Głośno wołaj o pomoc i zadzwoń pod numer 112",
+          "Jeśli jesteś w stanie dotrzeć do osoby tonącej, użyj narzędzia do ratowania, takiego jak koło ratunkowe lub ręcznik, aby ją wyciągnąć z wody",
+          "Jeśli nie masz narzędzia do ratowania, weź coś, co może pomóc w holowaniu osoby tonącej, takiego jak pływające przedmioty lub ubrania",
+          "Uważaj, aby nie wpaść do wody podczas ratowania",
+          "Jeśli osoba tonąca jest już na brzegu, sprawdź, czy oddycha i czy ma tętno",
+          "Jeśli osoba tonąca nie oddycha, rozpocznij sztuczne oddychanie i masaż serca, jeśli jesteś w stanie to zrobić",
+          "Zadzwoń po pogotowie i kontynuuj prowadzenie resuscytacji, aż do przyjazdu służb medycznych"
+        ]
+      },
+      {
+        "name": "Udzielanie pierwszej pomocy przy oparzeniach",
+        "description": "Zespół czynności stosowanych w sytuacji, gdy osoba jest oparzona",
+        "procedure": [
+          "Oceń stopień oparzenia – małe oparzenia I stopnia mogą być leczone w domu, natomiast oparzenia II i III stopnia wymagają interwencji lekarza",
+          "Zdejmij biżuterię i ubrania z miejsca oparzenia, jeśli są one przyczyną dalszego nacisku na skórę",
+          "Ochłodź miejsce oparzenia przez kilka minut, używając letniej lub ciepłej wody",
+          "Nałóż na oparzenie środek ochronny, taki jak specjalna maść lub plastry opatrunkowe",
+          "Utrzymuj ręce i stopy oparzonych osób w cieple",
+          "Jeśli oparzenie jest poważne lub zajmuje duży obszar ciała, zadzwoń pod numer 112 lub udaj się z osobą oparzoną do najbliższego szpitala"
         ]
       }
     ]
