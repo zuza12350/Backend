@@ -2,6 +2,7 @@ package pl.edu.pjwstk.project.config;
 
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import io.ipfs.api.IPFS;
 import io.ipfs.api.MerkleNode;
 import io.ipfs.api.NamedStreamable;
@@ -11,12 +12,12 @@ import lombok.SneakyThrows;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import pl.edu.pjwstk.project.exceptions.FileAlreadyExists;
 import pl.edu.pjwstk.project.filelogic.FileHolderRepository;
 
 
 import java.io.*;
 import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
@@ -52,7 +53,10 @@ public class IPFSService implements FileServiceImpl {
                 fileHolderRepository.saveFile(fileName,response.hash.toBase58());
                 return response.hash.toBase58();
             }else{
-                throw new FileAlreadyExists();
+                this.overrideFile(fileName, JsonParser
+                        .parseString(new String(file.getBytes(), StandardCharsets.UTF_8))
+                        .getAsJsonObject());
+                return fileHolderRepository.getFileHash(fileName);
             }
 
         } catch (IOException ex) {
