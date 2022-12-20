@@ -20,7 +20,7 @@ public class SurvivalController {
     }
 
     @DeleteMapping("/removeSurvivalTip")
-    public void removeGun(@RequestBody String name){
+    public void removeSurvivalTip(@RequestBody String name){
        service.removeSurvivalTip(name);
     }
 
