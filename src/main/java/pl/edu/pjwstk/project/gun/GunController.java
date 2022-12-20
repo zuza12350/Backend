@@ -26,7 +26,7 @@ public class GunController {
         service.addGun(categoryId,subType,gunRequest);
     }
     @PostMapping("/addGunType")
-    public void addGun(@RequestBody GunTypeRequest gunTypeRequest){
+    public void addGunType(@RequestBody GunTypeRequest gunTypeRequest){
         service.addGunType(gunTypeRequest);
     }
 
