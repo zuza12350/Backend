@@ -1,4 +1,4 @@
-package firstaid;
+package pl.edu.pjwstk.project.firstaid;
 
 import com.google.gson.JsonObject;
 import org.junit.Test;
@@ -8,10 +8,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import pl.edu.pjwstk.project.firstaid.FirstAidController;
-import pl.edu.pjwstk.project.firstaid.FirstAidKitRequest;
-import pl.edu.pjwstk.project.firstaid.FirstAidService;
-import pl.edu.pjwstk.project.firstaid.LifeSupportActionRequest;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;

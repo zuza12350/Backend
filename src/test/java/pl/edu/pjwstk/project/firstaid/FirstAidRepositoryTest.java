@@ -1,4 +1,4 @@
-package firstaid;
+package pl.edu.pjwstk.project.firstaid;
 
 import com.google.gson.JsonObject;
 import org.junit.Test;
@@ -6,14 +6,8 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import pl.edu.pjwstk.project.firstaid.FirstAidKitRequest;
-import pl.edu.pjwstk.project.firstaid.FirstAidRepository;
-import pl.edu.pjwstk.project.firstaid.FirstAidService;
-import pl.edu.pjwstk.project.firstaid.LifeSupportActionRequest;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
