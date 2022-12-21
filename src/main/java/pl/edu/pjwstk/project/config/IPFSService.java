@@ -94,7 +94,7 @@ public class IPFSService implements FileServiceImpl {
         try {
             String workingDirectory = System.getProperty("user.dir");
             String absoluteFilePath = "";
-            absoluteFilePath = workingDirectory + File.separator + fileName +".json";
+            absoluteFilePath = workingDirectory + File.separator + fileName;
 //            System.out.println("Final filepath : " + absoluteFilePath);
             File file = new File(absoluteFilePath);
 
