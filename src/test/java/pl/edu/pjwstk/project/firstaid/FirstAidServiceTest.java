@@ -1,4 +1,4 @@
-package firstaid;
+package pl.edu.pjwstk.project.firstaid;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
