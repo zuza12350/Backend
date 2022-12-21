@@ -14,6 +14,16 @@
       "name": "Bunkier",
       "latitude": 54.222222,
       "longitude": 18.777777
+    },
+    {
+      "name": "Bunkier",
+      "latitude": 54.368548,
+      "longitude": 18.655842
+    },
+    {
+      "name": "Szpital",
+      "latitude": 52.099741,
+      "longitude": 20.602462
     }
   ]
 }

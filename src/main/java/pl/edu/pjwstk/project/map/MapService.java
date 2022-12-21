@@ -1,6 +1,6 @@
 package pl.edu.pjwstk.project.map;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
@@ -15,89 +15,62 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MapService implements MapRepository{
 
-    private static class Province {
-        public String name;
-        public List<List<Double>> border_points;
-    }
-
-    private static class Provinces {
-        public List<Province> provinces;
-    }
-
     private final IPFSService ipfsService;
 
-    private JsonObject jsonProvinces;
+    private JsonObject jsonLocations;
 
-    public void setFirstAidFromFile() {
-        byte[] bytes = ipfsService.loadFile("provinces");
-        this.jsonProvinces = JsonParser.parseString(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
+    public void setLocationPointsFromFile() {
+        byte[] bytes = ipfsService.loadFile("mapLocations");
+        this.jsonLocations = JsonParser.parseString(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
     }
 
     @Override
     public JsonObject getLocations(double latitude, double longitude) throws IOException {
-        setFirstAidFromFile();
-        String province = getProvince(latitude, longitude, String.valueOf(jsonProvinces));
+        setLocationPointsFromFile();
 
-        if (province == null) {
-            return new JsonObject();
-        }
+        List<Location> locations = LocationFinder.findLocationsWithinRange(jsonLocations, latitude,longitude);
 
-        byte[] locationsJson = ipfsService.loadFile(province);
-
-        return JsonParser.parseString(new String(locationsJson, StandardCharsets.UTF_8)).getAsJsonObject();
+        return parseLocations(locations);
     }
 
+    public static JsonObject parseLocations(List<Location> locations) {
+        JsonArray jsonArray = new JsonArray();
+        for (Location location : locations) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("name", location.getName());
+            jsonObject.addProperty("latitude", location.getLatitude());
+            jsonObject.addProperty("longitude", location.getLongitude());
+            jsonArray.add(jsonObject);
+        }
 
-    private static String getProvince(double latitude, double longitude, String provincesJson) throws IOException {
-        Provinces provinces = new ObjectMapper().readValue(provincesJson, Provinces.class);
-        double[] point = new double[]{latitude, longitude};
+        JsonObject result = new JsonObject();
+        result.add("location_points", jsonArray);
+        return result;
+    }
 
-        for (Province province : provinces.provinces) {
-            List<List<Double>> borderPoints = province.border_points;
-            if (isPointInPolygon(point, borderPoints)) {
-                return province.name;
+    @Override
+    public void addLocationPoint(String name, double latitude, double longitude) {
+        JsonObject newLocation = new JsonObject();
+        newLocation.addProperty("name", name);
+        newLocation.addProperty("latitude", latitude);
+        newLocation.addProperty("longitude", longitude);
+
+        jsonLocations.getAsJsonArray("location_points").add(newLocation);
+
+        ipfsService.overrideFile("mapLocations", jsonLocations);
+    }
+
+    @Override
+    public void removeLocationPoint(double latitude, double longitude) {
+        JsonArray locationPoints = jsonLocations.getAsJsonArray("location_points");
+        for (int i = 0; i < locationPoints.size(); i++) {
+            JsonObject location = locationPoints.get(i).getAsJsonObject();
+            if (location.get("latitude").getAsDouble() == latitude && location.get("longitude").getAsDouble() == longitude) {
+                locationPoints.remove(i);
+                break;
             }
         }
 
-        return null;
-    }
-
-    /**
-     * Sprawdza, czy podany punkt geograficzny znajduje się wewnątrz podanego wielokąta.
-     *
-     * @param point Punkt geograficzny do sprawdzenia, podany jako tablica z dwoma elementami - współrzędnymi szerokości geograficznej i długości geograficznej.
-     * @param polygon Wielokąt, którego należy sprawdzić, czy zawiera punkt geograficzny. Podany jako lista punktów geograficznych,
-     *                podanych jako listy z dwoma elementami - współrzędnymi szerokości geograficznej i długości geograficznej.
-     * @return  `true`, jeśli punkt geograficzny znajduje się wewnątrz wielokąta, w przeciwnym razie `false`.
-     */
-    private static boolean isPointInPolygon(double[] point, List<List<Double>> polygon) {
-        double x = point[0];
-        double y = point[1];
-        int n = polygon.size();
-        boolean inside = false;
-
-        double[] p1 = polygon.get(0).stream().mapToDouble(Double::doubleValue).toArray();
-        for (int i = 0; i < n + 1; i++) {
-            double[] p2 = polygon.get(i % n).stream().mapToDouble(Double::doubleValue).toArray();
-            double p1x = p1[0];
-            double p1y = p1[1];
-            double p2x = p2[0];
-            double p2y = p2[1];
-            if (y > Math.min(p1y, p2y)) {
-                if (y <= Math.max(p1y, p2y)) {
-                    if (x <= Math.max(p1x, p2x)) {
-                        if (p1y != p2y) {
-                            double xints = (y - p1y) * (p2x - p1x) / (p2y - p1y) + p1x;
-                            if (p1x == p2x || x <= xints) {
-                                inside = !inside;
-                            }
-                        }
-                    }
-                }
-            }
-            p1 = p2;
-        }
-
-        return inside;
+        ipfsService.overrideFile("mapLocations", jsonLocations);
     }
 }

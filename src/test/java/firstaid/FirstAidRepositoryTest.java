@@ -31,8 +31,8 @@ public class FirstAidRepositoryTest {
 
     @Test
     public void testSetFirstAidFromFile() {
-        firstAidRepository.setFirstAidFromFile();
-        verify(firstAidRepository).setFirstAidFromFile();
+        firstAidRepository.loadFirstAidFromFile();
+        verify(firstAidRepository).loadFirstAidFromFile();
     }
 
     @Test
