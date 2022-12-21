@@ -1,12 +1,11 @@
-package survivalkit;
+package pl.edu.pjwstk.project.survivalkit;
+
 import com.google.gson.JsonArray;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import pl.edu.pjwstk.project.survivalkit.SurvivalKitRequest;
-import pl.edu.pjwstk.project.survivalkit.SurvivalRepository;
 
 
 import static org.junit.Assert.assertEquals;

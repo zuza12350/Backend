@@ -19,7 +19,7 @@ public class SurvivalService implements SurvivalRepository{
 
     @Override
     public void setSurvivalKitFromFile() {
-        byte[] bytes = ipfsService.loadFile("survivalKit");
+        byte[] bytes = ipfsService.loadFile("survivalKit.json");
         this.jsonObject = JsonParser.parseString(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
     }
 
