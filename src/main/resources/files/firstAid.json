@@ -1,44 +1,6 @@
 {
   "kits": {
     "description": "Apteczka jest podstawowym źródłem różnych leków, środków opatrunkowych czy przyborów potrzebnych do niesienia pomocy sobie, bądź innym. W Polsce nie ma przepisów, które określają wyposażenie apteczek, lecz najczęściej używa się normy DIN, którą wzoruję się też inne kraje Unii Europejskiej.",
-    "items": {
-      "basic": [
-        "plaster",
-        "opaska elastyczna",
-        "nożyczki",
-        "kompres",
-        "gaza",
-        "chlorheksydyna",
-        "środek odkażający",
-        "chusta trójkątna",
-        "termometr",
-        "płyn do dezynfekcji",
-        "latarka",
-        "rękawice jednorazowe"
-      ],
-      "optional": [
-        "leki przeciwbólowe",
-        "leki przeciwgorączkowe",
-        "leki przeciwalergiczne",
-        "leki przeciwskurczowe",
-        "leki rozkurczowe",
-        "leki przeciwhistaminowe",
-        "leki na kaszel",
-        "leki na ból brzucha",
-        "leki na biegunkę",
-        "leki przeciwhistaminowe",
-        "leki przeciwbólowe",
-        "leki uspokajające",
-        "leki na zaparcia",
-        "preparaty na odporność",
-        "środki na oparzenia",
-        "maść na ukąszenia",
-        "maść na kontuzje",
-        "środki antyseptyczne",
-        "witaminy",
-        "środki na wymioty"
-      ]
-    },
     "types": [
       {
         "name": "Apteczka domowa",

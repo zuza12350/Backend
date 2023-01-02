@@ -29,6 +29,24 @@ public class FirstAidController {
         return HttpStatus.BAD_REQUEST;
     }
 
+    @PutMapping("/editFirstAidKit/{name}")
+    public ResponseEntity<Object> editFirstAidKit(@PathVariable String name, @RequestBody FirstAidKitRequest request) {
+        if (service.editFirstAidKitInFile(name, request)) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/editLifeSupportAction/{name}")
+    public ResponseEntity<Object> editLifeSupportAction(@PathVariable String name, @RequestBody LifeSupportActionRequest request) {
+        if (service.editLifeSupportActionInFile(name, request)) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping("/removeLifeSupportActionFromFile/{name}")
     public HttpStatus removeLifeSupportActionFromFile(@PathVariable(value = "name") String name) {
         if (service.removeLifeSupportActionFromFile(name)) return HttpStatus.OK;

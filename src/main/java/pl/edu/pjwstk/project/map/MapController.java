@@ -21,6 +21,21 @@ public class MapController {
         return ResponseEntity.status(HttpStatus.OK).body(service.getLocations(latitude, longitude));
     }
 
+    @PostMapping("/addLocation/{name}/{latitude}/{longitude}")
+    public ResponseEntity<String> addLocation(@PathVariable String name,
+                                              @PathVariable double latitude,
+                                              @PathVariable double longitude) {
+        service.addLocationPoint(name, latitude, longitude);
+        return ResponseEntity.ok("Location added successfully");
+    }
+
+    @DeleteMapping("/removeLocation/{latitude}/{longitude}")
+    public ResponseEntity<String> removeLocation(@PathVariable double latitude, @PathVariable double longitude) {
+        service.removeLocationPoint(latitude, longitude);
+        return ResponseEntity.ok("Location removed successfully");
+    }
+
+
     @ExceptionHandler(TypeMismatchException.class)
     public ResponseEntity<String> handleTypeMismatchException(TypeMismatchException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Nieprawidłowy typ danych w ścieżce");

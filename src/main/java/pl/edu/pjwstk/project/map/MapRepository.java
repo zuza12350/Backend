@@ -8,4 +8,6 @@ import java.io.IOException;
 @Repository
 public interface MapRepository {
     JsonObject getLocations(double latitude, double longitude) throws IOException;
+    void addLocationPoint(String name, double latitude, double longitude);
+    void removeLocationPoint(double latitude, double longitude);
 }
