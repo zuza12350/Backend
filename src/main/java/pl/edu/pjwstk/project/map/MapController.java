@@ -40,6 +40,4 @@ public class MapController {
     public ResponseEntity<String> handleTypeMismatchException(TypeMismatchException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Nieprawidłowy typ danych w ścieżce");
     }
-
-
 }

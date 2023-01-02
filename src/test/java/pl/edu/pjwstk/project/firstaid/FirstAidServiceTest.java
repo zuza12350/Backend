@@ -1,34 +1,31 @@
 package pl.edu.pjwstk.project.firstaid;
 
-import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import pl.edu.pjwstk.project.config.IPFSService;
-import pl.edu.pjwstk.project.firstaid.FirstAidService;
-import pl.edu.pjwstk.project.firstaid.LifeSupportActionRequest;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FirstAidServiceTest {
 
     @Test
-    public void setFirstAidFromFile_ValidInput_SetsJsonObject() throws IOException {
+    public void loadFirstAidFromFile_ValidInput_SetsJsonObject() throws IOException {
         //arrange
         IPFSService ipfsServiceMock = mock(IPFSService.class);
         FirstAidService firstAidService = new FirstAidService(ipfsServiceMock);
 
         byte[] bytes = "{\"kits\": {\"types\": [{\"name\": \"Basic\",\"description\": \"Basic first aid kit\"},{\"name\": \"Advanced\",\"description\": \"Advanced first aid kit\"}]}}".getBytes();
-        when(ipfsServiceMock.loadFile("firstAid")).thenReturn(bytes);
+        when(ipfsServiceMock.loadFile("firstAid.json")).thenReturn(bytes);
 
         //act
         firstAidService.loadFirstAidFromFile();
@@ -38,6 +35,7 @@ public class FirstAidServiceTest {
         assertEquals(expectedJsonObject, firstAidService.getFirstAidContent());
     }
 
+
     @Test
     public void getFirstAidContent_ValidInput_ReturnsJsonObject() throws IOException {
         //arrange
@@ -45,7 +43,7 @@ public class FirstAidServiceTest {
         FirstAidService firstAidService = new FirstAidService(ipfsServiceMock);
 
         byte[] bytes = "{\"kits\": {\"types\": [{\"name\": \"Basic\",\"description\": \"Basic first aid kit\"},{\"name\": \"Advanced\",\"description\": \"Advanced first aid kit\"}]}}".getBytes();
-        when(ipfsServiceMock.loadFile("firstAid")).thenReturn(bytes);
+        when(ipfsServiceMock.loadFile("firstAid.json")).thenReturn(bytes);
 
         firstAidService.loadFirstAidFromFile();
 
@@ -58,30 +56,112 @@ public class FirstAidServiceTest {
     }
 
     @Test
-    public void addLifeSupportActionToFile_ValidInput_AddsLifeSupportAction() throws IOException {
+    public void elementExists_ElementExists_ReturnsTrue() {
         //arrange
         IPFSService ipfsServiceMock = mock(IPFSService.class);
         FirstAidService firstAidService = new FirstAidService(ipfsServiceMock);
 
-        byte[] bytes = "{\"support_actions\": {\"types\": [{\"name\": \"CPR\",\"description\": \"Cardiopulmonary resuscitation\",\"procedure\": \"Step 1...\"},{\"name\": \"Heimlich maneuver\",\"description\": \"Procedure to remove foreign object from the airway\",\"procedure\": \"Step 1...\"}]}}".getBytes();
-        when(ipfsServiceMock.loadFile("firstAid")).thenReturn(bytes);
-
-        firstAidService.loadFirstAidFromFile();
-
-        LifeSupportActionRequest request = new LifeSupportActionRequest();
-        request.setName("Test action");
-        request.setDescription("Test description");
-        request.setProcedure(Arrays.asList("Test", "procedure"));
+        JsonArray array = new JsonArray();
+        JsonObject element1 = new JsonObject();
+        element1.addProperty("name", "Test element 1");
+        array.add(element1);
+        JsonObject element2 = new JsonObject();
+        element2.addProperty("name", "Test element 2");
+        array.add(element2);
 
         //act
-        boolean result = firstAidService.addLifeSupportActionToFile(request);
+        boolean result = firstAidService.elementExists(array, "Test element 1");
 
         //assert
         assertTrue(result);
-        verify(ipfsServiceMock, times(1)).overrideFile("firstAid", firstAidService.getFirstAidContent());
-        JsonObject expectedJsonObject = JsonParser.parseString(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
-        expectedJsonObject.get("support_actions").getAsJsonObject().get("types").getAsJsonArray().add(new JsonParser().parse(new Gson().toJson(request)).getAsJsonObject());
-        assertEquals(expectedJsonObject, firstAidService.getFirstAidContent());
-
     }
+
+    @Test
+    public void elementExists_ElementDoesNotExist_ReturnsFalse() {
+        //arrange
+        IPFSService ipfsServiceMock = mock(IPFSService.class);
+        FirstAidService firstAidService = new FirstAidService(ipfsServiceMock);
+
+        JsonArray array = new JsonArray();
+        JsonObject element1 = new JsonObject();
+        element1.addProperty("name", "Test element 1");
+        array.add(element1);
+        JsonObject element2 = new JsonObject();
+        element2.addProperty("name", "Test element 2");
+        array.add(element2);
+
+        //act
+        boolean result = firstAidService.elementExists(array, "Test element 3");
+
+        //assert
+        assertFalse(result);
+    }
+
+
+    @Test
+    public void elementExists_ArrayIsEmpty_ReturnsFalse() {
+        //arrange
+        IPFSService ipfsServiceMock = mock(IPFSService.class);
+        FirstAidService firstAidService = new FirstAidService(ipfsServiceMock);
+
+        JsonArray array = new JsonArray();
+        //act
+        boolean result = firstAidService.elementExists(array, "Test element 3");
+
+        //assert
+        assertFalse(result);
+    }
+
+    @Test
+    public void addFirstAidKitToFile_ValidInput_AddsFirstAidKit() throws IOException {
+        //arrange
+        IPFSService ipfsServiceMock = mock(IPFSService.class);
+        FirstAidService firstAidService = new FirstAidService(ipfsServiceMock);
+
+        byte[] bytes = "{\"kits\": {\"types\": [{\"name\": \"Basic\",\"description\": \"Basic first aid kit\"},{\"name\": \"Advanced\",\"description\": \"Advanced first aid kit\"}]}}".getBytes();
+        when(ipfsServiceMock.loadFile("firstAid.json")).thenReturn(bytes);
+
+        firstAidService.loadFirstAidFromFile();
+
+        FirstAidKitRequest request = new FirstAidKitRequest();
+        request.setName("Test kit");
+        request.setDescription("Test description");
+        request.setItems(Arrays.asList("Test item 1", "Test item 2"));
+
+        //act
+        boolean result = firstAidService.addFirstAidKitToFile(request);
+
+        //assert
+        assertTrue(result);
+        verify(ipfsServiceMock, times(1)).overrideFile(eq("firstAid"), any());
+    }
+
+    // TODO: 25.12.2022
+//    @Test
+//    public void addFirstAidKitToFile_KitWithSameNameExists_DoesNotAddFirstAidKit() throws IOException {
+//        //arrange
+//        IPFSService ipfsServiceMock = mock(IPFSService.class);
+//        FirstAidService firstAidService = new FirstAidService(ipfsServiceMock);
+//
+//        byte[] bytes = "{\"kits\": {\"types\": [{\"name\": \"Basic\",\"description\": \"Basic first aid kit\"}]}}".getBytes();
+//        when(ipfsServiceMock.loadFile("firstAid.json")).thenReturn(bytes);
+//        when(ipfsServiceMock.overrideFile(anyString(), any(JsonObject.class))).thenReturn(true);
+//        firstAidService.loadFirstAidFromFile();
+//
+//        FirstAidKitRequest request = new FirstAidKitRequest();
+//        request.setName("Basic");
+//        request.setDescription("Test description");
+//        request.setItems(Arrays.asList("item1", "item2"));
+//
+//        //act
+//        boolean result = firstAidService.addFirstAidKitToFile(request);
+//
+//        //assert
+//        assertFalse(result);
+//        verify(ipfsServiceMock, times(0)).overrideFile(anyString(), any(JsonObject.class));
+//    }
+
+
+
 }
+

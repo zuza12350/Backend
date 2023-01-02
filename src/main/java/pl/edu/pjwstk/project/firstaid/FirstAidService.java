@@ -51,7 +51,7 @@ public class FirstAidService implements FirstAidRepository {
      * @param name nazwa szukanego elementu
      * @return true, jeśli element o podanej nazwie istnieje w tablicy, false w przeciwnym wypadku
      */
-    private boolean elementExists(JsonArray array, String name){
+    boolean elementExists(JsonArray array, String name){
         for (JsonElement element : array){
             if (element.getAsJsonObject().get("name").getAsString().equals(name))
                 return true;

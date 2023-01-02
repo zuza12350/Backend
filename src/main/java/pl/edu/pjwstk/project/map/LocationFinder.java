@@ -31,7 +31,7 @@ public class LocationFinder {
         return locations;
     }
 
-    private static double calculateDistance(double userLatitude, double userLongitude, double latitude, double longitude) {
+    static double calculateDistance(double userLatitude, double userLongitude, double latitude, double longitude) {
         double latitudeDifference = Math.toRadians(userLatitude - latitude);
         double longitudeDifference = Math.toRadians(userLongitude - longitude);
         double a = Math.sin(latitudeDifference / 2) * Math.sin(latitudeDifference / 2) +

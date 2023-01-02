@@ -1,6 +1,7 @@
 package pl.edu.pjwstk.project.map;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,21 @@ public class MapService implements MapRepository{
     private JsonObject jsonLocations;
 
     public void setLocationPointsFromFile() {
-        byte[] bytes = ipfsService.loadFile("mapLocations");
+        byte[] bytes = ipfsService.loadFile("mapLocations.json");
         this.jsonLocations = JsonParser.parseString(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
     }
+
+    private boolean locationPointExists(double latitude, double longitude) {
+        JsonArray locationPoints = jsonLocations.getAsJsonArray("location_points");
+        for (JsonElement location : locationPoints) {
+            if (location.getAsJsonObject().get("latitude").getAsDouble() == latitude && location.getAsJsonObject().get("longitude").getAsDouble() == longitude) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 
     @Override
     public JsonObject getLocations(double latitude, double longitude) throws IOException {
@@ -50,6 +63,10 @@ public class MapService implements MapRepository{
 
     @Override
     public void addLocationPoint(String name, double latitude, double longitude) {
+        if (locationPointExists(latitude, longitude)) return;
+
+        setLocationPointsFromFile();
+
         JsonObject newLocation = new JsonObject();
         newLocation.addProperty("name", name);
         newLocation.addProperty("latitude", latitude);
@@ -57,11 +74,12 @@ public class MapService implements MapRepository{
 
         jsonLocations.getAsJsonArray("location_points").add(newLocation);
 
-        ipfsService.overrideFile("mapLocations", jsonLocations);
+        ipfsService.overrideFile("mapLocations.json", jsonLocations);
     }
 
     @Override
     public void removeLocationPoint(double latitude, double longitude) {
+        setLocationPointsFromFile();
         JsonArray locationPoints = jsonLocations.getAsJsonArray("location_points");
         for (int i = 0; i < locationPoints.size(); i++) {
             JsonObject location = locationPoints.get(i).getAsJsonObject();
@@ -71,6 +89,6 @@ public class MapService implements MapRepository{
             }
         }
 
-        ipfsService.overrideFile("mapLocations", jsonLocations);
+        ipfsService.overrideFile("mapLocations.json", jsonLocations);
     }
 }
