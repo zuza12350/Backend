@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.edu.pjwstk.project.gun.requests.GunRequest;
 import pl.edu.pjwstk.project.gun.requests.GunTypeRequest;
 
-
 @RestController
 @AllArgsConstructor
 public class GunController {
