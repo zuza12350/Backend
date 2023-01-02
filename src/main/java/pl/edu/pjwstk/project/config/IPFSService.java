@@ -26,7 +26,6 @@ import java.nio.file.StandardOpenOption;
 public class IPFSService implements FileServiceImpl {
     private final IPFSConfig ipfsConfig;
     private final FileHolderRepository fileHolderRepository;
-
     @Override
     public String saveFile(String filePath) {
         try {
@@ -68,21 +67,22 @@ public class IPFSService implements FileServiceImpl {
     public byte[] loadFile(String filename) {
         try {
             IPFS ipfs = ipfsConfig.ipfs;
-            Multihash filePointer = Multihash.fromBase58(fileHolderRepository.getFileHash(filename));
+            Multihash filePointer = Multihash.fromBase58(fileHolderRepository.getFileHash(filename.substring(0, filename.lastIndexOf('.'))));
+//            Multihash filePointer = Multihash.fromBase58(fileHolderRepository.getFileHash(filename));
             return ipfs.cat(filePointer);
         } catch (IOException ex) {
             throw new RuntimeException("Error whilst communicating with the IPFS node", ex);
         }
     }
     @Override
-    public void changePointerToNewFile(MultipartFile file, String fileHash) {
+    public void changePointerToNewFile(MultipartFile file, String fileName) {
         try {
             InputStream inputStream = new ByteArrayInputStream(file.getBytes());
             IPFS ipfs = ipfsConfig.ipfs;
 
             NamedStreamable.InputStreamWrapper is = new NamedStreamable.InputStreamWrapper(inputStream);
             MerkleNode response = ipfs.add(is).get(0);
-            fileHolderRepository.changeFilePointerToNewHash(file.getName(),response.hash.toBase58());
+            fileHolderRepository.changeFilePointerToNewHash(fileName,response.hash.toBase58());
         } catch (IOException ex) {
             throw new RuntimeException("Error whilst communicating with the IPFS node", ex);
         }
@@ -90,12 +90,12 @@ public class IPFSService implements FileServiceImpl {
 
     @Override
     @SneakyThrows
-    public void overrideFile(String fileName, JsonObject data) {
+    public void overrideFile(String filename, JsonObject data) {
+        String fileName = filename+".json";
         try {
             String workingDirectory = System.getProperty("user.dir");
             String absoluteFilePath = "";
             absoluteFilePath = workingDirectory + File.separator + fileName;
-//            System.out.println("Final filepath : " + absoluteFilePath);
             File file = new File(absoluteFilePath);
 
             if (file.createNewFile()) {
@@ -111,7 +111,7 @@ public class IPFSService implements FileServiceImpl {
                 out.close();
             }
             MultipartFile multipartFile = new MockMultipartFile(fileName, new FileInputStream(file));
-            this.changePointerToNewFile(multipartFile,fileName);
+            this.changePointerToNewFile(multipartFile,filename);
         } catch (IOException e) {
             e.printStackTrace();
         }
