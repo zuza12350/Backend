@@ -6,9 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import pl.edu.pjwstk.project.securityconfig.dao.UserDao;
 import pl.edu.pjwstk.project.securityconfig.dto.AuthenticationRequest;
 
@@ -19,6 +18,7 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final UserDao userDao;
     private final JwtUtils jwtUtils;
+    private final UserService userService;
 
     @PostMapping("/auth")
     public ResponseEntity<String> authenticate(@RequestBody AuthenticationRequest request){
@@ -33,4 +33,17 @@ public class AuthController {
             return ResponseEntity.status(400).body("Some error has occurred");
         }
     }
+
+    @PostMapping("/createUser/{key}")
+    public ResponseEntity<String> createUser(AuthenticationRequest request, @PathVariable String key) throws Exception {
+        if (userService.createUser(request, key))
+            return ResponseEntity.ok("redirect:/users/login");
+        return ResponseEntity.badRequest().body("Some error has occurred");
+    }
+
+    @GetMapping("/generateKey")
+    public ResponseEntity<String> generateKey() throws Exception {
+        return ResponseEntity.ok(userService.generateKey());
+    }
+
 }

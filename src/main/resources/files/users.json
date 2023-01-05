@@ -1,0 +1,15 @@
+{
+  "newKeys": [
+    {
+      "encryptedKey" : "123",
+      "createdBy": "usernameOfUserWhoCreatedThisKey"
+    }
+  ],
+  "users" : [
+    {
+      "username" : "username",
+      "password" : "password",
+      "addedBy" : "usernameOfUserWhoAddedThisUser"
+    }
+  ]
+}
