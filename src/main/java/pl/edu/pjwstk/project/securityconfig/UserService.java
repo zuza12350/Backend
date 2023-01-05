@@ -23,7 +23,7 @@ import java.util.Base64;
 public class UserService implements UserRepository{
     private static final String ALGORITHM = "AES";
 
-    private static final String KEY = "4cq[veS_oY~njcq^T,qg&*;K52>LAc";
+    private static final String KEY = "B?E(H+MbQeThWmZq3t6w9z$C&F)J@NcR";
 
     private final IPFSService ipfsService;
     private JsonObject jsonObject;
@@ -32,13 +32,6 @@ public class UserService implements UserRepository{
     public void setUsersFromFile() {
         byte[] bytes = ipfsService.loadFile("users.json");
         this.jsonObject = JsonParser.parseString(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
-    }
-
-    private static String generateSalt() {
-        SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[16];
-        random.nextBytes(salt);
-        return Arrays.toString(salt);
     }
 
     private static String hashPassword(String password, String salt) {
@@ -82,7 +75,7 @@ public class UserService implements UserRepository{
         random.nextBytes(keyBytes);
         String key = Base64.getEncoder().encodeToString(keyBytes);
 
-        while (!keyExist(key, jsonObject.getAsJsonArray("newKeys"))) {
+        while (keyExist(key, jsonObject.getAsJsonArray("newKeys"))) {
             random.nextBytes(keyBytes);
             key = Base64.getEncoder().encodeToString(keyBytes);
         }
@@ -92,7 +85,7 @@ public class UserService implements UserRepository{
         // TODO: 05.01.2023 new.Key.addProperty("createdBy", "usernameOfUserWhoCreatedThisKey")
 
         jsonObject.getAsJsonArray("newKeys").add(newKey);
-        ipfsService.overrideFile("users.json", newKey);
+        ipfsService.overrideFile("users", jsonObject);
         return key;
     }
 
@@ -106,7 +99,7 @@ public class UserService implements UserRepository{
 
         var newUser = new JsonObject();
         newUser.addProperty("username", request.getUsername());
-        newUser.addProperty("password", hashPassword(request.getPassword(), generateSalt()));
+        newUser.addProperty("password", hashPassword(request.getPassword(), BCrypt.gensalt(10)));
         // TODO: 05.01.2023 newUser.addProperty("addedBy", "usernameOfUserWhoAddedThisUser");
 
         jsonObject.getAsJsonArray("users").add(newUser);
@@ -120,7 +113,7 @@ public class UserService implements UserRepository{
             }
         }
 
-        ipfsService.overrideFile("users.json", jsonObject);
+        ipfsService.overrideFile("users", jsonObject);
         return true;
     }
 }
