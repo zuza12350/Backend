@@ -35,7 +35,7 @@ public class AuthController {
     }
 
     @PostMapping("/createUser/{key}")
-    public ResponseEntity<String> createUser(AuthenticationRequest request, @PathVariable String key) throws Exception {
+    public ResponseEntity<String> createUser(@RequestBody AuthenticationRequest request, @PathVariable String key) throws Exception {
         if (userService.createUser(request, key))
             return ResponseEntity.ok("redirect:/users/login");
         return ResponseEntity.badRequest().body("Some error has occurred");
