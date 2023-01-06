@@ -18,7 +18,7 @@
     {
       "username": "username",
       "password": "password",
-      "addedBy": "usernameOfUserWhoAddedThisUser"
+      "createdBy": "usernameOfUserWhoAddedThisUser"
     },
     {
       "username": "user",
