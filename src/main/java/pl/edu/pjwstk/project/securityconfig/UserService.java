@@ -15,7 +15,6 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.security.SecureRandom;
-import java.util.Arrays;
 import java.util.Base64;
 
 @Service
@@ -82,7 +81,7 @@ public class UserService implements UserRepository{
 
         var newKey = new JsonObject();
         newKey.addProperty("encryptedKey", encryptKey(key));
-        // TODO: 05.01.2023 new.Key.addProperty("createdBy", "usernameOfUserWhoCreatedThisKey")
+        // TODO: 05.01.2023 newKey.addProperty("createdBy", "usernameOfUserWhoCreatedThisKey")
 
         jsonObject.getAsJsonArray("newKeys").add(newKey);
         ipfsService.overrideFile("users", jsonObject);
@@ -96,11 +95,15 @@ public class UserService implements UserRepository{
         if(!keyExist(key, jsonObject.getAsJsonArray("newKeys")))
             return false;
 
+        for (JsonElement username : jsonObject.getAsJsonArray("users"))
+            if (username.getAsJsonObject().get("username").getAsString().equals(request.getUsername()))
+                return false;
+
 
         var newUser = new JsonObject();
         newUser.addProperty("username", request.getUsername());
         newUser.addProperty("password", hashPassword(request.getPassword(), BCrypt.gensalt(10)));
-        // TODO: 05.01.2023 newUser.addProperty("addedBy", "usernameOfUserWhoAddedThisUser");
+        // TODO: 05.01.2023 newUser.addProperty("createdBy", "usernameOfUserWhoAddedThisUser");
 
         jsonObject.getAsJsonArray("users").add(newUser);
 
