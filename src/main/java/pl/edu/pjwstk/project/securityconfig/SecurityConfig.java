@@ -12,27 +12,29 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import pl.edu.pjwstk.project.securityconfig.dao.UserDao;
-
-
 
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
-    private final UserDao userDao;
-
-
+    private final UserService userService;
     @Bean
     public SecurityFilterChain security(HttpSecurity http) throws Exception{
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/**/auth").permitAll()
+                .antMatchers("/**/auth",
+                        "/**/getGunData/**",
+                        "/**/find",
+                        "/**/createUser/**",
+                        "/**/getFirstAidFile",
+                        "/**/getLocations/**",
+                        "/**/getSurvivalData"
+                ).permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -41,7 +43,7 @@ public class SecurityConfig {
                 .and()
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                ;
+        ;
         return http.build();
 
     }
@@ -62,8 +64,8 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        //return new BCryptPasswordEncoder(); //TODO !!!
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
+//        return NoOpPasswordEncoder.getInstance();
     }
 
     @Bean
@@ -71,7 +73,8 @@ public class SecurityConfig {
         return new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                return userDao.findUserByUsername(username);
+                return userService.findUserByUsername(username);
+
             }
         };
     }

@@ -2,9 +2,11 @@ package pl.edu.pjwstk.project.config;
 
 
 import com.google.gson.JsonObject;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
-public interface FileServiceImpl {
+@Repository
+public interface FileIPFSRepository {
     String saveFile(String filePath);
     String saveFile(String fileName,MultipartFile file);
     byte[] loadFile(String fileName);

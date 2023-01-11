@@ -6,27 +6,26 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.pjwstk.project.securityconfig.dao.UserDao;
 import pl.edu.pjwstk.project.securityconfig.dto.AuthenticationRequest;
+
 
 @RestController
 @RequiredArgsConstructor
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
-    private final UserDao userDao;
     private final JwtUtils jwtUtils;
     private final UserService userService;
 
     @PostMapping("/auth")
     public ResponseEntity<String> authenticate(@RequestBody AuthenticationRequest request){
+
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 request.getUsername(),
                 request.getPassword()
         ));
-        final UserDetails userDetails = userDao.findUserByUsername(request.getUsername());
+        final UserDetails userDetails = userService.findUserByUsername(request.getUsername());
         if(userDetails != null) {
             return ResponseEntity.ok(jwtUtils.generateToken(userDetails));
         }else{
@@ -44,6 +43,11 @@ public class AuthController {
     @GetMapping("/generateKey")
     public ResponseEntity<String> generateKey() throws Exception {
         return ResponseEntity.ok(userService.generateKey());
+    }
+    //TODO DO USUNIĘCIA
+    @GetMapping("/find/{username}")
+    public UserDetails getUsersTemp(@PathVariable("username") String username){
+        return userService.findUserByUsername(username);
     }
 
 }

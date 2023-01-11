@@ -29,7 +29,7 @@ public class FirstAidService implements FirstAidRepository {
      */
     @Override
     public void loadFirstAidFromFile() {
-        byte[] bytes = ipfsService.loadFile("firstAid.json");
+        byte[] bytes = ipfsService.loadFile("firstAid");
         this.jsonObject = JsonParser.parseString(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
     }
 
