@@ -23,7 +23,7 @@ import java.nio.file.StandardOpenOption;
 
 @Service
 @AllArgsConstructor
-public class IPFSService implements FileServiceImpl {
+public class IPFSService implements FileIPFSRepository {
     private final IPFSConfig ipfsConfig;
     private final FileHolderRepository fileHolderRepository;
     @Override
@@ -67,8 +67,7 @@ public class IPFSService implements FileServiceImpl {
     public byte[] loadFile(String filename) {
         try {
             IPFS ipfs = ipfsConfig.ipfs;
-            Multihash filePointer = Multihash.fromBase58(fileHolderRepository.getFileHash(filename.substring(0, filename.lastIndexOf('.'))));
-//            Multihash filePointer = Multihash.fromBase58(fileHolderRepository.getFileHash(filename));
+            Multihash filePointer = Multihash.fromBase58(fileHolderRepository.getFileHash(filename));
             return ipfs.cat(filePointer);
         } catch (IOException ex) {
             throw new RuntimeException("Error whilst communicating with the IPFS node", ex);

@@ -22,7 +22,7 @@ public class GunService implements GunRepository{
 
     @Override
     public void setGunsFromFile() {
-        byte[] bytes = ipfsService.loadFile("guns.json");
+        byte[] bytes = ipfsService.loadFile("guns");
         this.jsonObject = JsonParser.parseString(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
     }
     @Override

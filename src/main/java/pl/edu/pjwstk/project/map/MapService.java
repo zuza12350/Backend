@@ -21,7 +21,7 @@ public class MapService implements MapRepository{
     private JsonObject jsonLocations;
 
     public void setLocationPointsFromFile() {
-        byte[] bytes = ipfsService.loadFile("mapLocations.json");
+        byte[] bytes = ipfsService.loadFile("mapLocations");
         this.jsonLocations = JsonParser.parseString(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
     }
 

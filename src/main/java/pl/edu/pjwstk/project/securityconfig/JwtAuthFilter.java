@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import pl.edu.pjwstk.project.securityconfig.dao.UserDao;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -20,7 +19,7 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 @Component
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
-    private final UserDao userDao;
+    private final UserService userService;
     private final JwtUtils jwtUtils;
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -37,10 +36,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         jwtToken = authHeader.substring(7);
         username = jwtUtils.extractUsername(jwtToken);
         if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = userDao.findUserByUsername(username);
+            UserDetails userDetails = userService.findUserByUsername(username);
             final boolean isTokenValid = jwtUtils.validateToken(jwtToken,userDetails);
             if(isTokenValid){
                 UsernamePasswordAuthenticationToken authToken =
+                        new UsernamePasswordAuthenticationToken(userDetails, null , userDetails.getAuthorities());
                         new UsernamePasswordAuthenticationToken(userDetails, null , userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
