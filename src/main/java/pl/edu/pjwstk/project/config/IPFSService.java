@@ -12,6 +12,7 @@ import lombok.SneakyThrows;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import pl.edu.pjwstk.project.exceptions.WrongFileExtension;
 import pl.edu.pjwstk.project.filelogic.FileHolderRepository;
 
 
@@ -20,6 +21,7 @@ import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Objects;
 
 /**
  * The IPFSService class overrides the methods defined in FileIPFSImpl while adding all the logic that tells you how to manipulate the data.
@@ -43,20 +45,25 @@ public class IPFSService implements FileIPFSImpl {
     @Override
     public String saveFile(String fileName,MultipartFile file) {
         try {
-            if(!fileHolderRepository.existsByName(fileName)){
-                InputStream inputStream = new ByteArrayInputStream(file.getBytes());
-                IPFS ipfs = ipfsConfig.ipfs;
+            if(Objects.requireNonNull(file.getOriginalFilename()).split("\\.")[1].equals("json")){
+                if(!fileHolderRepository.existsByName(fileName)){
+                    InputStream inputStream = new ByteArrayInputStream(file.getBytes());
+                    IPFS ipfs = ipfsConfig.ipfs;
 
-                NamedStreamable.InputStreamWrapper is = new NamedStreamable.InputStreamWrapper(inputStream);
-                MerkleNode response = ipfs.add(is).get(0);
-                fileHolderRepository.saveFile(fileName,response.hash.toBase58());
-                return response.hash.toBase58();
-            }else{
-                this.overrideFile(fileName, JsonParser
-                        .parseString(new String(file.getBytes(), StandardCharsets.UTF_8))
-                        .getAsJsonObject());
-                return fileHolderRepository.getFileHash(fileName);
+                    NamedStreamable.InputStreamWrapper is = new NamedStreamable.InputStreamWrapper(inputStream);
+                    MerkleNode response = ipfs.add(is).get(0);
+                    fileHolderRepository.saveFile(fileName,response.hash.toBase58());
+                    return response.hash.toBase58();
+                }else{
+                    this.overrideFile(fileName, JsonParser
+                            .parseString(new String(file.getBytes(), StandardCharsets.UTF_8))
+                            .getAsJsonObject());
+                    return fileHolderRepository.getFileHash(fileName);
+                }
+            }else {
+                throw new WrongFileExtension();
             }
+
 
         } catch (IOException ex) {
             throw new RuntimeException("Error whilst communicating with the IPFS node", ex);
