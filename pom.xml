@@ -98,7 +98,6 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
-<!--        START           -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -108,7 +107,6 @@
             <artifactId>jjwt</artifactId>
             <version>0.9.1</version>
         </dependency>
-<!--        CHYBA BEZ TEGO  -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
