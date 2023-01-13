@@ -5,6 +5,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+/**
+ *The SurvivalController class is responsible for defining the endpoints for saving, removal, and receipt survival tips thanks to @RestController, @PostMapping, @GetMapping and @DeleteMapping annotations.
+ *
+ * @author Zuzanna Borkowska
+ */
 @RestController
 @AllArgsConstructor
 public class SurvivalController {

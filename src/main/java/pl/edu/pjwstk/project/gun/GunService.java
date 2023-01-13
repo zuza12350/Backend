@@ -13,24 +13,47 @@ import pl.edu.pjwstk.project.gun.requests.GunRequest;
 import pl.edu.pjwstk.project.gun.requests.GunTypeRequest;
 
 import java.nio.charset.StandardCharsets;
-
+/**
+ * The GunService class overrides the methods defined in GunRepository while adding all the logic that tells you how to manipulate the data.
+ * It includes the @Service annotation, which assigns classes in the service layer in Spring.
+ *
+ * @author Zuzanna Borkowska
+ */
 @Service
 @RequiredArgsConstructor
 public class GunService implements GunRepository{
     private final IPFSService ipfsService;
     private JsonObject jsonObject;
 
+    /**
+     * Method responsible for assigning to the jsonObject variable the data from the file located under the hash assigned to the guns name in the database.
+     */
     @Override
     public void setGunsFromFile() {
         byte[] bytes = ipfsService.loadFile("guns");
         this.jsonObject = JsonParser.parseString(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
     }
+
+
+    /**
+     * The method is responsible for returning the weapon of the type of weapon specified in the argument.
+     * @param kind a variable indicating the type of desired weapon
+     * @return array of weapons of a particular type
+     * @throws ElementNotFoundException
+     */
     @Override
     public JsonArray getGunData(String kind) throws ElementNotFoundException {
         setGunsFromFile();
         var data = this.jsonObject;
         return data.getAsJsonArray(kind);
     }
+
+    /**
+     * The method is responsible for adding weapons to the category or subcategory specified in the argument.
+     * @param categoryId id weapon category
+     * @param subType subtype of given weapon @Nullable means that it is not required.
+     * @param gunRequest object that represents request of gun
+     */
     @Override
     public void addGun(Long categoryId, @Nullable Long subType, GunRequest gunRequest) {
         setGunsFromFile();
@@ -41,6 +64,11 @@ public class GunService implements GunRepository{
         this.jsonObject.getAsJsonArray("guns").add(new Gson().toJsonTree(gunRequest));
         ipfsService.overrideFile("guns",this.jsonObject);
     }
+
+    /**
+     * The method is responsible for adding a type of weapon.
+     * @param gunTypeRequest object that represents request of gun type
+     */
     @Override
     public void addGunType(GunTypeRequest gunTypeRequest) {
         setGunsFromFile();
@@ -50,6 +78,11 @@ public class GunService implements GunRepository{
         this.jsonObject.getAsJsonArray("guns_types").add(new Gson().toJsonTree(gunTypeRequest));
         ipfsService.overrideFile("guns",this.jsonObject);
     }
+
+    /**
+     * The method responsible for removing weapons by a given name.
+     * @param gunName variable representing the name of the weapon
+     */
     @Override
     public void removeGunByName(String gunName) {
         var guns = getGunData("guns");
@@ -64,6 +97,11 @@ public class GunService implements GunRepository{
 
         ipfsService.overrideFile("guns",this.jsonObject);
     }
+
+    /**
+     * The method responsible for removing weapon type by a given type name.
+     * @param gunTypeName ariable representing the name of the weapon type
+     */
     @Override
     public void removeGunType(String gunTypeName) {
         var guns_types = getGunData("guns_types");

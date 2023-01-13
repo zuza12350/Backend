@@ -6,6 +6,11 @@ import org.springframework.stereotype.Repository;
 import pl.edu.pjwstk.project.gun.requests.GunRequest;
 import pl.edu.pjwstk.project.gun.requests.GunTypeRequest;
 
+/**
+ * Interface with method declaration to add, delete or remove weapon information.
+ *
+ * @author Zuzanna Borkowska
+ */
 @Repository
 public interface GunRepository {
     void setGunsFromFile();

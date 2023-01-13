@@ -7,6 +7,12 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * A class that is a representation of a database entity.
+ * It represent an entity named file_holder, which stores annotations to files with given information and the hash assigned to them so as to simplify finding files in IPFS.
+ *
+ * @author Zuzanna Borkowska
+ */
 @Entity
 @Table(name = "file_holder", schema = "public")
 @Getter @Setter

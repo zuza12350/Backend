@@ -8,6 +8,13 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+/**
+ * The IPFSConfig class is responsible for connecting the API to IPFS.
+ * It contains @Configuration annotations, which tells Spring container that there is one or more beans that needs to be dealt with on runtime
+ * and @Scope singleton annotation, which creates a single instance of that bean. This means that all requests for that bean name will return the same object, which is cached.
+ *
+ * @author Zuzanna Borkowwka
+ */
 @Configuration
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 @Getter @Setter

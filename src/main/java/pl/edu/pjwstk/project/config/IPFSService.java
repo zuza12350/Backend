@@ -21,25 +21,25 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
+/**
+ * The IPFSService class overrides the methods defined in FileIPFSImpl while adding all the logic that tells you how to manipulate the data.
+ * It includes the @Service annotation, which assigns classes in the service layer in Spring.
+ *
+ * @author Zuzanna Borkowska
+ */
 @Service
 @AllArgsConstructor
-public class IPFSService implements FileIPFSRepository {
+public class IPFSService implements FileIPFSImpl {
     private final IPFSConfig ipfsConfig;
     private final FileHolderRepository fileHolderRepository;
-    @Override
-    public String saveFile(String filePath) {
-        try {
-            IPFS ipfs = ipfsConfig.ipfs;
-            File _file = new File(filePath);
-            NamedStreamable.FileWrapper file = new NamedStreamable.FileWrapper(_file);
-            MerkleNode response = ipfs.add(file).get(0);
-            System.out.println("Hash (base 58): " + response.hash.toBase58());
-            return response.hash.toBase58();
-        } catch (IOException ex) {
-            throw new RuntimeException("Error whilst communicating with the IPFS node", ex);
-        }
-    }
 
+    /**
+     * The method responsible for writing the file to both the database and IPFS.
+     * In case there is an annotation to a file in the database, its hash is changed.
+     * @param fileName which indicate a database row
+     * @param file  uploaded file
+     * @return hash of the newly added file
+     */
     @Override
     public String saveFile(String fileName,MultipartFile file) {
         try {
@@ -63,6 +63,11 @@ public class IPFSService implements FileIPFSRepository {
         }
     }
 
+    /**
+     * Method responsible for reading data from a file in a byte array substrate.
+     * @param filename which indicate a database row
+     * @return file content in bytes
+     */
     @Override
     public byte[] loadFile(String filename) {
         try {
@@ -73,6 +78,13 @@ public class IPFSService implements FileIPFSRepository {
             throw new RuntimeException("Error whilst communicating with the IPFS node", ex);
         }
     }
+
+    /**
+     *The method handles the case when I annotate a file with a given name in the database.
+     * In this case, it adds the changed file to IPFS and changes the hash assigned to the given file name in the database.
+     * @param file uploaded file
+     * @param fileName filename which indicate a database row
+     */
     @Override
     public void changePointerToNewFile(MultipartFile file, String fileName) {
         try {
@@ -87,6 +99,12 @@ public class IPFSService implements FileIPFSRepository {
         }
     }
 
+    /**
+     *
+     * The method overwrite the data from the file and then call the method to change the pointer to the new hash in the database.
+     * @param filename filename which indicate a database row
+     * @param data new data that must be saved to a file in the form of json
+     */
     @Override
     @SneakyThrows
     public void overrideFile(String filename, JsonObject data) {

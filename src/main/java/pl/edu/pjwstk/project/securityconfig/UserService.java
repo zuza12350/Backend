@@ -23,6 +23,12 @@ import java.security.Key;
 import java.security.SecureRandom;
 import java.util.*;
 
+/**
+ *  The UserService class overrides the methods defined in UserRepository while adding all the logic that tells you how user is created or how to get information about logged user.
+ *  It includes the @Service annotation, which assigns classes in the service layer in Spring.
+ *
+ * @author Zuzanna Borkowska, Mikołaj Noga
+ */
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserRepository{
@@ -123,6 +129,11 @@ public class UserService implements UserRepository{
         ipfsService.overrideFile("users", jsonObject);
         return true;
     }
+
+    /**
+     * Method responsible for getting user name of current authenticated user.
+     * @return Name of current logged user.
+     */
     @Override
     public String getUsernameOfCurrentLoggedUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -135,6 +146,12 @@ public class UserService implements UserRepository{
             return principal.toString();
         }
     }
+
+    /**
+     * Method responsible for getting user core information by given username.
+     * @param username variable which represents name of user.
+     * @return UserDetails object which provides core user information.
+     */
     @Override
     public UserDetails findUserByUsername(String username) {
         setUsersFromFile();
@@ -151,6 +168,12 @@ public class UserService implements UserRepository{
     }
 
 
+    /**
+     * Method which builds needed user information for authentication.
+     * @param user object with represents user for authentication
+     * @param authorities list of user authorities
+     * @return built user for authentication
+     */
     private User buildUserForAuth(User user,
                                             List<GrantedAuthority> authorities) {
         return new User(user.getUsername(), user.getPassword(),

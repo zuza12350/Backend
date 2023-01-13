@@ -17,6 +17,8 @@ Aby uruchomić projekt najpierw należy zainstalować aplikację [IPFS Desktop](
 Następnie należy skolonować repozytorium i uruchomić projekt. Aplikacja będzie uruchomi się na localhost:8081.
 
 ## Linki do dokumentacji i innych zasobów
+- [Podłączenie do sieci IPFS](https://github.com/ipfs-shipyard/java-ipfs-http-client)
+- 
 
 ## Informacje o autorach i licencji projektu
 Autorami repozytorium są:
