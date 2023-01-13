@@ -8,7 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.pjwstk.project.gun.requests.GunRequest;
 import pl.edu.pjwstk.project.gun.requests.GunTypeRequest;
-
+/**
+ *The GunController class is responsible for defining the endpoint for saving weapons or their type and their removal and receipt thanks to @RestController, @PostMapping, @GetMapping and @DeleteMapping annotations.
+ *
+ * @author Zuzanna Borkowska
+ */
 @RestController
 @AllArgsConstructor
 public class GunController {

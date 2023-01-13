@@ -6,6 +6,12 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * SurvivalKitRequest is a class that is a reflection of the request for the survival tips. By using @Expose
+ * allowed to serialize variables to json object. Annotation @Serializable tells Spring how to name a variable in json.
+ *
+ * @author Zuzanna Borkowska
+ */
 @Setter
 @Getter
 public class SurvivalKitRequest {

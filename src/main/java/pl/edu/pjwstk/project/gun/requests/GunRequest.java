@@ -9,6 +9,12 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 
+/**
+ * GunRequest is a class that is a reflection of the request for the weapon. By using @Expose
+ * allowed to serialize variables to json object. Annotation @Serializable tells Spring how to name a variable in json.
+ *
+ * @author Zuzanna Borkowska
+ */
 @Getter
 @Setter
 public class GunRequest {

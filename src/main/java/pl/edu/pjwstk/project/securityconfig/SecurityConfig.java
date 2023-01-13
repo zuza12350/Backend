@@ -17,11 +17,24 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
+/**
+ * SecurityConfig class is responsible for securing endpoints defined in application.
+ *
+ * @author Zuzanna Borkowska
+ */
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     private final UserService userService;
+
+    /**
+     * Method responsible for indicating which endpoints needs authenticated access - custom filter.
+     * @param http variable allows configuring web based security for specific http requests.
+     * @return SecurityFilterChain which defines a filter chain which is capable of being matched against an HttpServletRequest. In order to decide whether it applies to that request.
+     * @throws Exception
+     */
     @Bean
     public SecurityFilterChain security(HttpSecurity http) throws Exception{
         http
@@ -48,6 +61,10 @@ public class SecurityConfig {
 
     }
 
+    /**
+     * Method which provides authentication.
+     * @return AuthenticationProvider with set password encoder and user details service.
+     */
     @Bean
     public AuthenticationProvider authenticationProvider() {
         final DaoAuthenticationProvider authenticationProvider = 
@@ -62,12 +79,19 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
     }
 
+    /**
+     * Method responsible for defining password encoder.
+     * @return PasswordEncoder - defined password encoder in this case BCryptBCryptPasswordEncoder
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-//        return NoOpPasswordEncoder.getInstance();
     }
 
+    /**
+     * Method define user details service.
+     * @return UserDetailsService which loads user-specific data.
+     */
     @Bean
     public UserDetailsService userDetailsService(){
         return new UserDetailsService() {

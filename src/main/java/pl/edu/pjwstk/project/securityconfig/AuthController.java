@@ -9,7 +9,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.pjwstk.project.securityconfig.dto.AuthenticationRequest;
 
-
+/**
+ * The AuthController class is responsible for defining the endpoint for saving user, generating access key and user login thanks to @RestController, @PostMapping and @GetMapping annotations.
+ *
+ * @author Zuzanna Borkowska, Mikołaj Noga
+ */
 @RestController
 @RequiredArgsConstructor
 public class AuthController {
@@ -43,11 +47,6 @@ public class AuthController {
     @GetMapping("/generateKey")
     public ResponseEntity<String> generateKey() throws Exception {
         return ResponseEntity.ok(userService.generateKey());
-    }
-    //TODO DO USUNIĘCIA
-    @GetMapping("/find/{username}")
-    public UserDetails getUsersTemp(@PathVariable("username") String username){
-        return userService.findUserByUsername(username);
     }
 
 }
