@@ -5,6 +5,11 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * FirstAidKitRequest is class used to add and modify firstAidKit data.
+ *
+ * @author Mikołaj Noga
+ */
 @Getter
 @Setter
 public class FirstAidKitRequest {

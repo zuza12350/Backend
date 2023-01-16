@@ -40,16 +40,32 @@ public class UserService implements UserRepository{
     private final IPFSService ipfsService;
     private JsonObject jsonObject;
 
+
+    /**
+     * Method used to set the user information from a file on IPFS.
+     */
     @Override
     public void setUsersFromFile() {
         byte[] bytes = ipfsService.loadFile("users");
         this.jsonObject = JsonParser.parseString(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
     }
 
+    /**
+     * Method used to hash a password using the BCrypt library.
+     * @param password the password to be hashed
+     * @param salt the salt used for hashing
+     * @return the hashed password
+     */
     private static String hashPassword(String password, String salt) {
         return BCrypt.hashpw(password, salt);
     }
 
+    /**
+     * Method used to encrypt a user key using the AES algorithm.
+     * @param key the key to be encrypted
+     * @return the encrypted key
+     * @throws Exception if encryption fails
+     */
     private static String encryptKey(String key) throws Exception {
         Key secretKey = new SecretKeySpec(KEY.getBytes(), ALGORITHM);
         Cipher cipher = Cipher.getInstance(ALGORITHM);
@@ -58,6 +74,12 @@ public class UserService implements UserRepository{
         return Base64.getEncoder().encodeToString(encryptedKeyBytes);
     }
 
+    /**
+     * Method used to decrypt a user key using the AES algorithm.
+     * @param encryptedKey the key to be decrypted
+     * @return the decrypted key
+     * @throws Exception if decryption fails
+     */
     private static String decryptKey(String encryptedKey) throws Exception {
         Key secretKey = new SecretKeySpec(KEY.getBytes(), ALGORITHM);
         Cipher cipher = Cipher.getInstance(ALGORITHM);
@@ -67,6 +89,14 @@ public class UserService implements UserRepository{
         return new String(decryptedKeyBytes);
     }
 
+    /**
+     * Method to check if provided key already exists in the list of keys.
+     *
+     * @param providedKey the key to be checked for existence
+     * @param keys the list of keys to check against
+     * @return true if the key already exists, false otherwise
+     * @throws Exception if encryption of provided key fails
+     */
     private static boolean keyExist(String providedKey, JsonArray keys) throws Exception {
         for (JsonElement key : keys)
             if (key.getAsJsonObject().get("encryptedKey").getAsString().equals(encryptKey(providedKey)))
@@ -74,6 +104,14 @@ public class UserService implements UserRepository{
         return false;
     }
 
+    /**
+     * Method that generates a new key for the user.
+     * It checks if the key already exists in the list of keys and if it does, it regenerates the key until it's unique.
+     * It then adds the new key to the list of keys and saves the list to the file on IPFS.
+     *
+     * @return the newly generated key
+     * @throws Exception if encryption of the key or saving to IPFS fails
+     */
     @Override
     public String generateKey() throws Exception {
         setUsersFromFile();
@@ -96,7 +134,17 @@ public class UserService implements UserRepository{
         return key;
     }
 
-
+    /**
+     * Method that creates a new user with given credentials and key.
+     * The key is first checked to see if it exists in the list of keys.
+     * It then checks if the provided username is already taken, and if not it creates a new user and adds it to the list of users.
+     * It then removes the used key from the list of keys and saves the updated list to the file on IPFS.
+     *
+     * @param request the authentication request containing the new user's credentials
+     * @param key the key to be used for creating the new user
+     * @return true if user is created successfully, false otherwise
+     * @throws Exception if encryption of key fails or saving to IPFS fails
+     */
     @Override
     public boolean createUser(AuthenticationRequest request, String key) throws Exception {
         setUsersFromFile();
@@ -131,7 +179,7 @@ public class UserService implements UserRepository{
     }
 
     /**
-     * Method responsible for getting user name of current authenticated user.
+     * Method responsible for getting username of current authenticated user.
      * @return Name of current logged user.
      */
     @Override
