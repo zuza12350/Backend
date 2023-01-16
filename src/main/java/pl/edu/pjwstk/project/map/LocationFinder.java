@@ -7,11 +7,25 @@ import java.util.List;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+/**
+ * The LocationFinder class is used to find all the locations within a specified range from a given user location.
+ * It uses the Haversine formula to calculate the distance between two points on Earth.
+ *
+ * @author Mikołaj Noga
+ */
 public class LocationFinder {
 
     private static final double EARTH_RADIUS = 6371; // radius of Earth in kilometers
     private static final double MAX_DISTANCE = 70; // maximum distance in kilometers
 
+    /**
+     * This method takes in a JsonObject, user latitude and user longitude and finds all the locations within a specified range from the user location.
+     * @param json The JsonObject containing information about the location points.
+     * @param userLatitude The user's current latitude.
+     * @param userLongitude The user's current longitude.
+     * @return A list of Location objects that are within the specified range.
+     * @throws IOException If an input or output exception occurs.
+     */
     public static List<Location> findLocationsWithinRange(JsonObject json, double userLatitude, double userLongitude) throws IOException {
         List<Location> locations = new ArrayList<>();
 
@@ -31,6 +45,15 @@ public class LocationFinder {
         return locations;
     }
 
+    /**
+     * This method calculates the distance between two points on Earth using the Haversine formula.
+     *
+     * @param userLatitude The user's current latitude
+     * @param userLongitude The user's current longitude
+     * @param latitude The location's latitude
+     * @param longitude The location's longitude
+     * @return The distance between the user location and the given location in kilometers
+     */
     static double calculateDistance(double userLatitude, double userLongitude, double latitude, double longitude) {
         double latitudeDifference = Math.toRadians(userLatitude - latitude);
         double longitudeDifference = Math.toRadians(userLongitude - longitude);

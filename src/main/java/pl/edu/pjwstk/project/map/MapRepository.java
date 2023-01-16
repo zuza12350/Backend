@@ -5,6 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 
+/**
+ * Interface representing a repository for map data.
+ *
+ * @author Mikołaj Noga
+ */
 @Repository
 public interface MapRepository {
     JsonObject getLocations(double latitude, double longitude) throws IOException;

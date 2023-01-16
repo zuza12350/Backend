@@ -4,6 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Class representing a location on a map.
+ *
+ * @author Mikołaj Noga
+ */
 @Getter
 @Setter
 @AllArgsConstructor

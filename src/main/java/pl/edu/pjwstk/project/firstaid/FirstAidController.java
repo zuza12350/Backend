@@ -6,6 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * FirstAidController is a class responsible for defining endpoints to <BR>get, add, modify and delete all first aid data saved in IPFS.
+ *
+ * @author Mikołaj Noga
+ */
 @RestController
 @AllArgsConstructor
 public class FirstAidController {

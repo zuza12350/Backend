@@ -9,9 +9,8 @@ import pl.edu.pjwstk.project.config.IPFSService;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Klasa odpowiedzialna za obsługę pliku json z informacjami o pierwszej pomocy.
- * Implementuje interfejs {@link FirstAidRepository}.
- * Używa biblioteki Gson do parsowania i tworzenia obiektów JSON.
+ * The class responsible for handling the json file with first aid information.
+ * Implements the {@link FirstAidRepository} interface.
  *
  * @author Mikołaj Noga
  * @see FirstAidRepository
@@ -25,7 +24,7 @@ public class FirstAidService implements FirstAidRepository {
     private JsonObject jsonObject;
 
     /**
-     * Ładuje plik z informacjami o pierwszej pomocy do pamięci.
+     * Loads a file with first aid information into memory.
      */
     @Override
     public void loadFirstAidFromFile() {
@@ -34,9 +33,9 @@ public class FirstAidService implements FirstAidRepository {
     }
 
     /**
-     * Zwraca zawartość pliku z informacjami o pierwszej pomocy jako obiekt JSON.
+     * Returns the contents of the first aid information file as a JSON object.
      *
-     * @return obiekt JSON zawierający informacje o pierwszej pomocy
+     * @return JSON object containing first aid information.
      */
     @Override
     public JsonObject getFirstAidContent() {
@@ -45,11 +44,11 @@ public class FirstAidService implements FirstAidRepository {
     }
 
     /**
-     * Sprawdza, czy element o podanej nazwie istnieje w tablicy JSON.
+     * Checks whether an element with the specified name exists in the JSON array.
      *
-     * @param array tablica JSON
-     * @param name nazwa szukanego elementu
-     * @return true, jeśli element o podanej nazwie istnieje w tablicy, false w przeciwnym wypadku
+     * @param array JSON Array
+     * @param name name of the search element
+     * @return true if the element with the given name exists in the array, false otherwise
      */
     boolean elementExists(JsonArray array, String name){
         for (JsonElement element : array){
@@ -60,11 +59,11 @@ public class FirstAidService implements FirstAidRepository {
     }
 
     /**
-     * Dodaje nowy zestaw pierwszej pomocy do pliku.
-     * Operacja jest wykonywana w ramach transakcji bazodanowej.
+     * Adds a new first aid kit to the file.
+     * Operation is performed as part of a database transaction.
      *
-     * @param request obiekt zawierający dane nowego zestawu pierwszej pomocy
-     * @return true, jeśli dodawanie się powiodło, false w przeciwnym wypadku
+     * @param request object containing data of the new first aid kit
+     * @return true if the addition was successful, false otherwise
      */
     @Override
     @Transactional
@@ -91,6 +90,13 @@ public class FirstAidService implements FirstAidRepository {
     }
 
 
+    /**
+     * Adds a new life support action to the file.
+     * Operation is performed as part of a database transaction.
+     *
+     * @param request object containing data of the new life support action
+     * @return true if the addition was successful, false otherwise
+     */
     @Override
     @Transactional
     public boolean addLifeSupportActionToFile(LifeSupportActionRequest request) {
@@ -117,7 +123,14 @@ public class FirstAidService implements FirstAidRepository {
     }
 
 
-
+    /**
+     * Edit first aid kit from the file.
+     * Operation is performed as part of a database transaction.
+     *
+     * @param name name of edited object
+     * @param request object containing data of the first aid kit
+     * @return true if the modification was successful, false otherwise
+     */
     @Override
     @Transactional
     public boolean editFirstAidKitInFile(String name, FirstAidKitRequest request) {
@@ -143,7 +156,14 @@ public class FirstAidService implements FirstAidRepository {
     }
 
 
-
+    /**
+     * Edit life support action from the file.
+     * Operation is performed as part of a database transaction.
+     *
+     * @param name name of edited object
+     * @param request object containing data of the life support action
+     * @return true if the modification was successful, false otherwise
+     */
     @Override
     @Transactional
     public boolean editLifeSupportActionInFile(String name, LifeSupportActionRequest request) {
@@ -171,7 +191,13 @@ public class FirstAidService implements FirstAidRepository {
     }
 
 
-
+    /**
+     * Remove life support action from the file.
+     * Operation is performed as part of a database transaction.
+     *
+     * @param name name of removed object
+     * @return true if the modification was successful, false otherwise
+     */
     @Override
     @Transactional
     public boolean removeLifeSupportActionFromFile(String name) {
@@ -194,6 +220,13 @@ public class FirstAidService implements FirstAidRepository {
         }
     }
 
+    /**
+     * Remove first aid kit from the file.
+     * Operation is performed as part of a database transaction.
+     *
+     * @param name name of removed object
+     * @return true if the modification was successful, false otherwise
+     */
     @Override
     @Transactional
     public boolean removeFirstAidKitFromFile(String name) {

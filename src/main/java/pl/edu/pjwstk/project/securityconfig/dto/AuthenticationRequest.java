@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * AuthenticationRequest class is is a class that is a reflection of the request needed for authentication.
+ * AuthenticationRequest class is a class that is a reflection of the request needed for authentication.
  *
  * @author Zuzanna Borkowska
  */
