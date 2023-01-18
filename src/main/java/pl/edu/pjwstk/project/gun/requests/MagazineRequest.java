@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.unitesting.gun.requests;
+package pl.edu.pjwstk.project.gun.requests;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

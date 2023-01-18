@@ -1,10 +1,10 @@
-package pl.edu.pjwstk.project.unitesting.firstaid;
+package pl.edu.pjwstk.project.firstaid;
 
 import com.google.gson.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.edu.pjwstk.project.unitesting.config.IPFSService;
+import pl.edu.pjwstk.project.config.IPFSService;
 
 import java.nio.charset.StandardCharsets;
 

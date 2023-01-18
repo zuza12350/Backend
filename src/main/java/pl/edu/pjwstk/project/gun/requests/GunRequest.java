@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.unitesting.gun.requests;
+package pl.edu.pjwstk.project.gun.requests;
 
 import lombok.Getter;
 import lombok.Setter;

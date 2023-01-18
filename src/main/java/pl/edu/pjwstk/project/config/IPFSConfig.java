@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.unitesting.config;
+package pl.edu.pjwstk.project.config;
 
 import io.ipfs.api.IPFS;
 import lombok.Getter;
@@ -22,9 +22,6 @@ public class IPFSConfig {
     IPFS ipfs;
     @SneakyThrows
     public IPFSConfig() {
-//        ipfs = new IPFS("/dnsaddr/ipfs.infura.io/tcp/5001/https");
-//        System.out.println("connected");
-//        //System.out.println("id: " + ipfs.id());
         ipfs = new IPFS("localhost", 5001);
     }
 

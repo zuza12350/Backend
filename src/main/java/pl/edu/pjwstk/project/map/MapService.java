@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.unitesting.map;
+package pl.edu.pjwstk.project.map;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.edu.pjwstk.project.unitesting.config.IPFSService;
+import pl.edu.pjwstk.project.config.IPFSService;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

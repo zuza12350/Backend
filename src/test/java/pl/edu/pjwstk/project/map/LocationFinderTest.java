@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.unitesting.map;
+package pl.edu.pjwstk.project.map;
 
 import com.google.gson.JsonArray;
 import org.junit.Test;

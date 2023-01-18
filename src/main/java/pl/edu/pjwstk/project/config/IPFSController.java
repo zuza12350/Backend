@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.unitesting.config;
+package pl.edu.pjwstk.project.config;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

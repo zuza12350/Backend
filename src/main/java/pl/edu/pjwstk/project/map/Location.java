@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.unitesting.map;
+package pl.edu.pjwstk.project.map;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

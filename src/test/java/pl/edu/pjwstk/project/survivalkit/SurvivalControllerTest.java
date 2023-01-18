@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.unitesting.survivalkit;
+package pl.edu.pjwstk.project.survivalkit;
 
 import com.google.gson.JsonArray;
 import org.junit.Test;

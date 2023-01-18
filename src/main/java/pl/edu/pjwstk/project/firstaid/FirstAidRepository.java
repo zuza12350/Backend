@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.unitesting.firstaid;
+package pl.edu.pjwstk.project.firstaid;
 
 import com.google.gson.JsonObject;
 import org.springframework.stereotype.Repository;

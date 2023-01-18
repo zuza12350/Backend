@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.unitesting.firstaid;
+package pl.edu.pjwstk.project.firstaid;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -6,7 +6,7 @@ import com.google.gson.JsonParser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
-import pl.edu.pjwstk.project.unitesting.config.IPFSService;
+import pl.edu.pjwstk.project.config.IPFSService;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

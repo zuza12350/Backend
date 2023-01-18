@@ -1,11 +1,11 @@
-package pl.edu.pjwstk.project.unitesting.map;
+package pl.edu.pjwstk.project.map;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import pl.edu.pjwstk.project.unitesting.config.IPFSService;
+import pl.edu.pjwstk.project.config.IPFSService;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
