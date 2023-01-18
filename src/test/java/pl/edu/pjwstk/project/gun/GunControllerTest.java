@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.gun;
+package pl.edu.pjwstk.project.unitesting.gun;
 
 import com.google.gson.JsonArray;
 import org.junit.Test;
@@ -8,8 +8,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import pl.edu.pjwstk.project.gun.requests.GunRequest;
-import pl.edu.pjwstk.project.gun.requests.GunTypeRequest;
+import pl.edu.pjwstk.project.unitesting.gun.requests.GunRequest;
+import pl.edu.pjwstk.project.unitesting.gun.requests.GunTypeRequest;
 
 
 import static org.junit.Assert.assertEquals;

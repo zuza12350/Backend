@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.config;
+package pl.edu.pjwstk.project.unitesting.config;
 
 
 import com.google.gson.JsonObject;

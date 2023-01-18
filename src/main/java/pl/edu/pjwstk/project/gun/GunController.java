@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.gun;
+package pl.edu.pjwstk.project.unitesting.gun;
 
 
 import com.google.gson.JsonArray;
@@ -6,8 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.pjwstk.project.gun.requests.GunRequest;
-import pl.edu.pjwstk.project.gun.requests.GunTypeRequest;
+import pl.edu.pjwstk.project.unitesting.gun.requests.GunRequest;
+import pl.edu.pjwstk.project.unitesting.gun.requests.GunTypeRequest;
 /**
  *The GunController class is responsible for defining the endpoint for saving weapons or their type and their removal and receipt thanks to
  *  @RestController, @PostMapping, @GetMapping and @DeleteMapping annotations.

@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.survivalkit;
+package pl.edu.pjwstk.project.unitesting.survivalkit;
 
 import com.google.gson.JsonArray;
 import lombok.AllArgsConstructor;

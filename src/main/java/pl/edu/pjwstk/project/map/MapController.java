@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.map;
+package pl.edu.pjwstk.project.unitesting.map;
 
 import com.google.gson.JsonObject;
 import lombok.AllArgsConstructor;

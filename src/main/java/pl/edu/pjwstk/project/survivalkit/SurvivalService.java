@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.survivalkit;
+package pl.edu.pjwstk.project.unitesting.survivalkit;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.edu.pjwstk.project.config.IPFSService;
+import pl.edu.pjwstk.project.unitesting.config.IPFSService;
 import pl.edu.pjwstk.project.exceptions.ElementNotFoundException;
 
 import java.nio.charset.StandardCharsets;

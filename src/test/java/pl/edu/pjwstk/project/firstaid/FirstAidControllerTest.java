@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.firstaid;
+package pl.edu.pjwstk.project.unitesting.firstaid;
 
 import com.google.gson.JsonObject;
 import org.junit.Test;

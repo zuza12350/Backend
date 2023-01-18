@@ -1,10 +1,10 @@
-package pl.edu.pjwstk.project.gun;
+package pl.edu.pjwstk.project.unitesting.gun;
 
 import com.google.gson.JsonArray;
 import com.sun.istack.Nullable;
 import org.springframework.stereotype.Repository;
-import pl.edu.pjwstk.project.gun.requests.GunRequest;
-import pl.edu.pjwstk.project.gun.requests.GunTypeRequest;
+import pl.edu.pjwstk.project.unitesting.gun.requests.GunRequest;
+import pl.edu.pjwstk.project.unitesting.gun.requests.GunTypeRequest;
 
 /**
  * Interface with method declaration to add, delete or remove weapon information.

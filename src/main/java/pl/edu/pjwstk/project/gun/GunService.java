@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.project.gun;
+package pl.edu.pjwstk.project.unitesting.gun;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -7,10 +7,10 @@ import com.google.gson.JsonParser;
 import com.sun.istack.Nullable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.edu.pjwstk.project.config.IPFSService;
+import pl.edu.pjwstk.project.unitesting.config.IPFSService;
 import pl.edu.pjwstk.project.exceptions.ElementNotFoundException;
-import pl.edu.pjwstk.project.gun.requests.GunRequest;
-import pl.edu.pjwstk.project.gun.requests.GunTypeRequest;
+import pl.edu.pjwstk.project.unitesting.gun.requests.GunRequest;
+import pl.edu.pjwstk.project.unitesting.gun.requests.GunTypeRequest;
 
 import java.nio.charset.StandardCharsets;
 /**
