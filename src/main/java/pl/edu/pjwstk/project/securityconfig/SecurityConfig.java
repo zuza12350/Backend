@@ -44,9 +44,9 @@ public class SecurityConfig {
                         "/**/getGunData/**",
                         "/**/find",
                         "/**/createUser/**",
-                        "/**/getFirstAidFile",
+                        "/**/getFirstAidFile/**",
                         "/**/getLocations/**",
-                        "/**/getSurvivalData"
+                        "/**/getSurvivalData/**"
                 ).permitAll()
                 .anyRequest()
                 .authenticated()
