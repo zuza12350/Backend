@@ -186,6 +186,7 @@
       {
         "name": "Resuscytacja krążeniowo-oddechowa",
         "description": "Zespół czynności stosowanych w wypadku ustania czynności serca z utratą świadomości i bezdechem.",
+        "video": "https://www.youtube.com/watch?v=xvIO9t0MxIM",
         "procedure": [
           "Oceń swoje bezpieczeństwo",
           "Sprawdź, czy poszkodowany reaguje",
@@ -201,6 +202,7 @@
       {
         "name": "Manewr Heimlicha",
         "description": "Chwyt Heimlicha czy też rękoczyn Heimlicha wykonujemy w przypadku zadławienia. Stosowany może być u dorosłych, jak również u dzieci.",
+        "video": "https://www.youtube.com/watch?v=fW-EtDJcKME",
         "procedure": [
           "Stajemy za poszkodowanym i obejmujemy ramionami jego tułów na wysokości nadbrzusza.",
           "Pochylamy osobę zadławioną do przodu, by ciało obce mogło wydostać się na zewnątrz układu oddechowego.",
@@ -212,6 +214,7 @@
       {
         "name": "Kontrola krwawienia",
         "description": "Kontrola krwawienia polega na podjęciu działań mających na celu zatrzymanie lub spowolnienie krwawienia, aby zapobiec dalszej utracie krwi",
+        "video": "https://www.youtube.com/watch?v=KDPumgxM6nQ",
         "procedure": [
           "Ocenić nasilenie krwawienia",
           "Załóż rękawiczki, jeśli są dostępne",
@@ -224,6 +227,7 @@
       {
         "name": "Leczenie udaru cieplnego",
         "description": "Udar cieplny to stan zagrożenia medycznego, który występuje, gdy temperatura ciała wzrasta do niebezpiecznego poziomu. Wymaga on natychmiastowego leczenia.",
+        "video": "https://www.youtube.com/watch?v=2J6ZtnUPX5w",
         "procedure": [
           "Natychmiast wezwać pomoc medyczną",
           "Przenieś osobę do chłodnego, zacienionego miejsca",
@@ -236,6 +240,7 @@
       {
         "name": "Postępowanie w przypadku wstrząsu",
         "description": "Wstrząs jest poważnym stanem, który występuje, gdy organizm nie otrzymuje wystarczającego przepływu krwi. Może być spowodowany przez różne czynniki, takie jak krwawienie, uraz lub reakcja alergiczna. Wstrząs może zagrażać życiu, jeśli nie jest leczony.",
+        "video": "https://www.youtube.com/watch?v=ZXNY3r14DCU",
         "procedure": [
           "Oceń własne bezpieczeństwo",
           "W razie potrzeby wezwij pomoc",
@@ -251,6 +256,7 @@
       {
         "name": "Ratowanie tonącego",
         "description": "Zespół czynności stosowanych w sytuacji, gdy osoba tonie lub jest w niebezpieczeństwie utonięcia.",
+        "video": "https://www.youtube.com/watch?v=_oSY5uNR_SI",
         "procedure": [
           "Oceń swoje bezpieczeństwo – sprawdź, czy jesteś w stanie bezpiecznie dotrzeć do osoby tonącej, bez ryzyka utonięcia",
           "Głośno wołaj o pomoc i zadzwoń pod numer 112",
@@ -265,6 +271,7 @@
       {
         "name": "Udzielanie pierwszej pomocy przy oparzeniach",
         "description": "Zespół czynności stosowanych w sytuacji, gdy osoba jest oparzona",
+        "video": "https://www.youtube.com/watch?v=oCyo1juhuwA",
         "procedure": [
           "Oceń stopień oparzenia – małe oparzenia I stopnia mogą być leczone w domu, natomiast oparzenia II i III stopnia wymagają interwencji lekarza",
           "Zdejmij biżuterię i ubrania z miejsca oparzenia, jeśli są one przyczyną dalszego nacisku na skórę",
