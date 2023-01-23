@@ -13,6 +13,6 @@ import java.util.List;
 @Getter
 @Setter
 public class FirstAidKitRequest {
-    private String name, description;
+    private String name, description, video;
     private List<String> items;
 }
