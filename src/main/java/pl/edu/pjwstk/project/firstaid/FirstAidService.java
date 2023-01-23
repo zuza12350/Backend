@@ -105,6 +105,7 @@ public class FirstAidService implements FirstAidRepository {
         JsonObject newFirstAidSupportAction = new JsonObject();
         newFirstAidSupportAction.add("name", JsonParser.parseString(request.getName()));
         newFirstAidSupportAction.add("description", JsonParser.parseString(request.getDescription()));
+        newFirstAidSupportAction.add("video", JsonParser.parseString(request.getVideo()));
 
         JsonArray procedureArray = new JsonArray();
         for (String procedure : request.getProcedure()) {
@@ -167,6 +168,7 @@ public class FirstAidService implements FirstAidRepository {
             if (lifeSupportAction.get("name").getAsString().equals(name)) {
                 lifeSupportAction.add("name", JsonParser.parseString(request.getName()));
                 lifeSupportAction.add("description", JsonParser.parseString(request.getDescription()));
+                lifeSupportAction.add("video", JsonParser.parseString(request.getVideo()));
 
                 JsonArray procedureArray = new JsonArray();
                 for (String procedure : request.getProcedure()) {
