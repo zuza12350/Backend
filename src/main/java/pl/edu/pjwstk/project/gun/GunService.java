@@ -49,6 +49,16 @@ public class GunService implements GunRepository{
     }
 
     /**
+     *
+     * @return whole data from file
+     */
+    @Override
+    public JsonObject getWholeGunData(){
+        setGunsFromFile();
+        return this.jsonObject;
+    }
+
+    /**
      * The method is responsible for adding weapons to the category or subcategory specified in the argument.
      * @param categoryId id weapon category
      * @param subType subtype of given weapon @Nullable means that it is not required.

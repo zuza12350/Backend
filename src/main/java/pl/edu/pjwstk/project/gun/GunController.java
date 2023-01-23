@@ -2,6 +2,7 @@ package pl.edu.pjwstk.project.gun;
 
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,10 @@ public class GunController {
     @GetMapping("/getGunData/{kind}")
     public ResponseEntity<JsonArray> getGunsData(@PathVariable("kind") String kind) {
         return ResponseEntity.status(HttpStatus.OK).body(service.getGunData(kind));
+    }
+    @GetMapping("/getWholeGunData")
+    public ResponseEntity<JsonObject> getWholeGunsData() {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getWholeGunData());
     }
     @PostMapping(value = {"/addGun/{categoryId}", "/addGun/{categoryId}/{subType}"})
     public void addGun(@PathVariable(value = "categoryId") Long categoryId,
