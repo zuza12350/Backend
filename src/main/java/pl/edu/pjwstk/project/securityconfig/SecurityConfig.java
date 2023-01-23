@@ -42,6 +42,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/**/auth",
                         "/**/getGunData/**",
+                        "/**/getWholeGunData/**",
                         "/**/find",
                         "/**/createUser/**",
                         "/**/getFirstAidFile/**",
