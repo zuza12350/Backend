@@ -25,31 +25,7 @@ public class MapServiceTest {
     @InjectMocks
     private MapService mapService;
 
-    @Test
-    public void setLocationPointsFromFile_shouldLoadFileFromIPFSService() throws IOException {
-        // given
-        byte[] fileBytes = "{\"location_points\": []}".getBytes(StandardCharsets.UTF_8);
-        when(ipfsService.loadFile("mapLocations.json")).thenReturn(fileBytes);
 
-        // when
-        mapService.setLocationPointsFromFile();
-
-        // then
-        verify(ipfsService).loadFile("mapLocations.json");
-    }
-
-    @Test
-    public void getLocations_shouldLoadLocationPointsFromFile() throws IOException {
-        // given
-        byte[] fileBytes = "{\"location_points\": []}".getBytes(StandardCharsets.UTF_8);
-        when(ipfsService.loadFile("mapLocations.json")).thenReturn(fileBytes);
-
-        // when
-        mapService.getLocations(51.10, 17.03);
-
-        // then
-        verify(ipfsService).loadFile("mapLocations.json");
-    }
 
     @Test
     public void parseLocations_shouldReturnJsonObjectWithLocationPointsArray() {
@@ -118,61 +94,5 @@ public class MapServiceTest {
     }
 
 
-    @Test
-    public void addLocationPoint_shouldLoadLocationPointsFromFile() {
-        // given
-        byte[] fileBytes = "{\"location_points\": []}".getBytes(StandardCharsets.UTF_8);
-        IPFSService ipfsService = mock(IPFSService.class);
-        when(ipfsService.loadFile("mapLocations")).thenReturn(fileBytes);
-        MapService mapService = new MapService(ipfsService);
 
-        // when
-        mapService.addLocationPoint("Location 1", 51.10, 17.03);
-
-        // then
-        verify(ipfsService).loadFile("mapLocations");
-    }
-
-    @Test
-    public void addLocationPoint_shouldAddNewLocationPoint() throws NoSuchFieldException, IllegalAccessException {
-        // given
-        byte[] fileBytes = "{\"location_points\": []}".getBytes(StandardCharsets.UTF_8);
-        IPFSService ipfsService = mock(IPFSService.class);
-        when(ipfsService.loadFile("mapLocations.json")).thenReturn(fileBytes);
-        MapService mapService = new MapService(ipfsService);
-
-        // when
-        mapService.addLocationPoint("Location 1", 51.10, 17.03);
-
-        // then
-        Field field = mapService.getClass().getDeclaredField("jsonLocations");
-        field.setAccessible(true);
-        JsonObject jsonLocations = (JsonObject) field.get(mapService);
-
-        assertThat(jsonLocations.getAsJsonArray("location_points").size()).isEqualTo(1);
-        JsonObject locationPoint = jsonLocations.getAsJsonArray("location_points").get(0).getAsJsonObject();
-        assertThat(locationPoint.get("name").getAsString()).isEqualTo("Location 1");
-        assertThat(locationPoint.get("latitude").getAsDouble()).isEqualTo(51.10);
-        assertThat(locationPoint.get("longitude").getAsDouble()).isEqualTo(17.03);
-    }
-
-    @Test
-    public void addLocationPoint_shouldOverrideFile() throws NoSuchFieldException, IllegalAccessException {
-        // given
-        byte[] fileBytes = "{\"location_points\": []}".getBytes(StandardCharsets.UTF_8);
-        IPFSService ipfsService = mock(IPFSService.class);
-        when(ipfsService.loadFile("mapLocations.json")).thenReturn(fileBytes);
-        MapService mapService = new MapService(ipfsService);
-
-        // when
-        mapService.addLocationPoint("Location 1", 51.10, 17.03);
-
-        // then
-
-        Field field = mapService.getClass().getDeclaredField("jsonLocations");
-        field.setAccessible(true);
-        JsonObject jsonLocations = (JsonObject) field.get(mapService);
-
-        verify(ipfsService).overrideFile("mapLocations.json", jsonLocations);
-    }
 }

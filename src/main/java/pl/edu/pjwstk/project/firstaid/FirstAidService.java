@@ -60,13 +60,11 @@ public class FirstAidService implements FirstAidRepository {
 
     /**
      * Adds a new first aid kit to the file.
-     * Operation is performed as part of a database transaction.
      *
      * @param request object containing data of the new first aid kit
      * @return true if the addition was successful, false otherwise
      */
     @Override
-    @Transactional
     public boolean addFirstAidKitToFile(FirstAidKitRequest request) {
         loadFirstAidFromFile();
         JsonArray firstAidKits = jsonObject.get("kits").getAsJsonObject().get("types").getAsJsonArray();
@@ -92,13 +90,11 @@ public class FirstAidService implements FirstAidRepository {
 
     /**
      * Adds a new life support action to the file.
-     * Operation is performed as part of a database transaction.
      *
      * @param request object containing data of the new life support action
      * @return true if the addition was successful, false otherwise
      */
     @Override
-    @Transactional
     public boolean addLifeSupportActionToFile(LifeSupportActionRequest request) {
         loadFirstAidFromFile();
         JsonArray lifeSupportActions = jsonObject.get("support_actions").getAsJsonObject().get("types").getAsJsonArray();
@@ -125,14 +121,12 @@ public class FirstAidService implements FirstAidRepository {
 
     /**
      * Edit first aid kit from the file.
-     * Operation is performed as part of a database transaction.
      *
      * @param name name of edited object
      * @param request object containing data of the first aid kit
      * @return true if the modification was successful, false otherwise
      */
     @Override
-    @Transactional
     public boolean editFirstAidKitInFile(String name, FirstAidKitRequest request) {
         loadFirstAidFromFile();
 
@@ -158,14 +152,12 @@ public class FirstAidService implements FirstAidRepository {
 
     /**
      * Edit life support action from the file.
-     * Operation is performed as part of a database transaction.
      *
      * @param name name of edited object
      * @param request object containing data of the life support action
      * @return true if the modification was successful, false otherwise
      */
     @Override
-    @Transactional
     public boolean editLifeSupportActionInFile(String name, LifeSupportActionRequest request) {
         loadFirstAidFromFile();
 
@@ -193,13 +185,11 @@ public class FirstAidService implements FirstAidRepository {
 
     /**
      * Remove life support action from the file.
-     * Operation is performed as part of a database transaction.
      *
      * @param name name of removed object
      * @return true if the modification was successful, false otherwise
      */
     @Override
-    @Transactional
     public boolean removeLifeSupportActionFromFile(String name) {
         loadFirstAidFromFile();
         JsonArray lifeSupportActions = jsonObject.get("support_actions").getAsJsonObject().get("types").getAsJsonArray();
@@ -222,13 +212,11 @@ public class FirstAidService implements FirstAidRepository {
 
     /**
      * Remove first aid kit from the file.
-     * Operation is performed as part of a database transaction.
      *
      * @param name name of removed object
      * @return true if the modification was successful, false otherwise
      */
     @Override
-    @Transactional
     public boolean removeFirstAidKitFromFile(String name) {
         loadFirstAidFromFile();
         JsonElement element = null;
