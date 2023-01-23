@@ -17,6 +17,7 @@ public class FirstAidController {
 
     private final FirstAidService service;
 
+    @CrossOrigin
     @GetMapping("/getFirstAidFile")
     public ResponseEntity<JsonObject> getFileContent() {
         return ResponseEntity.status(HttpStatus.OK).body(service.getFirstAidContent());

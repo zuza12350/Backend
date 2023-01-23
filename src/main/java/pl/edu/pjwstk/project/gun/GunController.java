@@ -24,6 +24,8 @@ public class GunController {
     public ResponseEntity<JsonArray> getGunsData(@PathVariable("kind") String kind) {
         return ResponseEntity.status(HttpStatus.OK).body(service.getGunData(kind));
     }
+
+    @CrossOrigin
     @GetMapping("/getWholeGunData")
     public ResponseEntity<JsonObject> getWholeGunsData() {
         return ResponseEntity.status(HttpStatus.OK).body(service.getWholeGunData());
