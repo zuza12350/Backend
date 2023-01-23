@@ -28,6 +28,8 @@ public class MapController {
      * @return a JSON object containing the list of locations
      * @throws IOException if an error occurs while reading the location data
      */
+
+    @CrossOrigin
     @GetMapping("/getLocations/{latitude}/{longitude}")
     public ResponseEntity<JsonObject> getLocations(
             @PathVariable("latitude") double latitude, @PathVariable("longitude") double longitude) throws IOException {

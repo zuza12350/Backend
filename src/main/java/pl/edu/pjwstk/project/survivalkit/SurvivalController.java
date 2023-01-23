@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class SurvivalController {
     private final SurvivalService service;
 
+    @CrossOrigin
     @GetMapping("/getSurvivalData")
     public ResponseEntity<JsonArray> getSurvivalData() {
         return ResponseEntity.status(HttpStatus.OK).body(service.getSurvivalData());
