@@ -3,7 +3,6 @@ package pl.edu.pjwstk.project.firstaid;
 import com.google.gson.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import pl.edu.pjwstk.project.config.IPFSService;
 
 import java.nio.charset.StandardCharsets;
@@ -80,7 +79,7 @@ public class FirstAidService implements FirstAidRepository {
         for (String item : request.getItems()) {
             itemsArray.add(JsonParser.parseString(item));
         }
-        newFirstAidKit.add("items", itemsArray);
+        newFirstAidKit.add("elements", itemsArray);
 
         firstAidKits.add(newFirstAidKit);
         ipfsService.overrideFile("firstAid", this.jsonObject);
@@ -111,7 +110,8 @@ public class FirstAidService implements FirstAidRepository {
         for (String procedure : request.getProcedure()) {
             procedureArray.add(JsonParser.parseString(procedure));
         }
-        newFirstAidSupportAction.add("procedure", procedureArray);
+        newFirstAidSupportAction.add("elements", procedureArray);
+
 
         lifeSupportActions.add(newFirstAidSupportAction);
         ipfsService.overrideFile("firstAid", this.jsonObject);
@@ -144,7 +144,7 @@ public class FirstAidService implements FirstAidRepository {
                 for (String item : request.getItems()) {
                     itemsArray.add(JsonParser.parseString(item));
                 }
-                firstAidKit.add("items", itemsArray);
+                firstAidKit.add("elements", itemsArray);
                 break;
             }
         }
@@ -180,7 +180,7 @@ public class FirstAidService implements FirstAidRepository {
                 for (String procedure : request.getProcedure()) {
                     procedureArray.add(JsonParser.parseString(procedure));
                 }
-                lifeSupportAction.add("procedure", procedureArray);
+                lifeSupportAction.add("elements", procedureArray);
                 break;
             }
         }

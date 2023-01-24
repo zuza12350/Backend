@@ -14,5 +14,5 @@ import java.util.List;
 @Setter
 public class LifeSupportActionRequest {
     private String name, description, video;
-    private List<String> procedure;
+    private List<String> elements;
 }
