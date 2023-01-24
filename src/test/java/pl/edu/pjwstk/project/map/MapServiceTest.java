@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.*;
 
 public class MapServiceTest {
@@ -24,8 +25,6 @@ public class MapServiceTest {
 
     @InjectMocks
     private MapService mapService;
-
-
 
     @Test
     public void parseLocations_shouldReturnJsonObjectWithLocationPointsArray() {
