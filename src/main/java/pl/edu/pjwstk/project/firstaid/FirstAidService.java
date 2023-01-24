@@ -76,7 +76,7 @@ public class FirstAidService implements FirstAidRepository {
         newFirstAidKit.add("description", JsonParser.parseString(request.getDescription()));
 
         JsonArray itemsArray = new JsonArray();
-        for (String item : request.getItems()) {
+        for (String item : request.getElements()) {
             itemsArray.add(JsonParser.parseString(item));
         }
         newFirstAidKit.add("elements", itemsArray);
@@ -107,7 +107,7 @@ public class FirstAidService implements FirstAidRepository {
         newFirstAidSupportAction.add("video", JsonParser.parseString(request.getVideo()));
 
         JsonArray procedureArray = new JsonArray();
-        for (String procedure : request.getProcedure()) {
+        for (String procedure : request.getElements()) {
             procedureArray.add(JsonParser.parseString(procedure));
         }
         newFirstAidSupportAction.add("elements", procedureArray);
@@ -141,7 +141,7 @@ public class FirstAidService implements FirstAidRepository {
                 firstAidKit.add("name", JsonParser.parseString(request.getName()));
                 firstAidKit.add("description", JsonParser.parseString(request.getDescription()));
                 JsonArray itemsArray = new JsonArray();
-                for (String item : request.getItems()) {
+                for (String item : request.getElements()) {
                     itemsArray.add(JsonParser.parseString(item));
                 }
                 firstAidKit.add("elements", itemsArray);
@@ -177,7 +177,7 @@ public class FirstAidService implements FirstAidRepository {
                 lifeSupportAction.add("video", JsonParser.parseString(request.getVideo()));
 
                 JsonArray procedureArray = new JsonArray();
-                for (String procedure : request.getProcedure()) {
+                for (String procedure : request.getElements()) {
                     procedureArray.add(JsonParser.parseString(procedure));
                 }
                 lifeSupportAction.add("elements", procedureArray);
