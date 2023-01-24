@@ -43,9 +43,9 @@ public class SurvivalRepositoryTest {
     @Test
     public void testGetSurvivalData() {
         JsonArray expectedData = new JsonArray();
-        when(survivalRepository.getSurvivalData()).thenReturn(expectedData);
+        when(survivalRepository.getSurvivalTips()).thenReturn(expectedData);
 
-        JsonArray actualData = survivalRepository.getSurvivalData();
+        JsonArray actualData = survivalRepository.getSurvivalTips();
         assertEquals(expectedData, actualData);
     }
 

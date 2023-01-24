@@ -50,7 +50,7 @@ public class SurvivalService implements SurvivalRepository{
      */
     @Override
     public void removeSurvivalTip(String name){
-        var survivalKit = getSurvivalData();
+        var survivalKit = getSurvivalTips();
         for(int i=0; i< survivalKit.size();i++){
             if(survivalKit.get(i).getAsJsonObject().get("name").getAsString().equals(name)){
                 survivalKit.remove(i);
@@ -68,9 +68,14 @@ public class SurvivalService implements SurvivalRepository{
      * @throws ElementNotFoundException
      */
     @Override
-    public JsonArray getSurvivalData() throws ElementNotFoundException {
+    public JsonArray getSurvivalTips() throws ElementNotFoundException {
         setSurvivalKitFromFile();
         var data = this.jsonObject;
         return data.getAsJsonArray("tips");
+    }
+
+    public JsonObject getSurvivalData() {
+        setSurvivalKitFromFile();
+        return jsonObject;
     }
 }

@@ -13,6 +13,6 @@ public interface SurvivalRepository {
     void setSurvivalKitFromFile();
     void addSurvivalTip(SurvivalKitRequest request);
     void removeSurvivalTip(String name);
-    JsonArray getSurvivalData();
+    JsonArray getSurvivalTips();
 
 }

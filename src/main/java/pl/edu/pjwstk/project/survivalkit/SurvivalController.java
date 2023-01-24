@@ -1,6 +1,7 @@
 package pl.edu.pjwstk.project.survivalkit;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +18,19 @@ public class SurvivalController {
     private final SurvivalService service;
 
     @CrossOrigin
+    @GetMapping("/getSurvivalTips")
+    public ResponseEntity<JsonArray> getSurvivalTips() {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getSurvivalTips());
+    }
+
+    @CrossOrigin
     @GetMapping("/getSurvivalData")
-    public ResponseEntity<JsonArray> getSurvivalData() {
+    public ResponseEntity<JsonObject> getSurvivalData() {
         return ResponseEntity.status(HttpStatus.OK).body(service.getSurvivalData());
     }
+
+
+
     @PostMapping("/addSurvivalKit")
     public void addSurvivalTip(@RequestBody SurvivalKitRequest request){
         service.addSurvivalTip(request);
