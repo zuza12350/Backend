@@ -38,7 +38,7 @@ public class UserService implements UserRepository{
     private static final String KEY = "B?E(H+MbQeThWmZq3t6w9z$C&F)J@NcR";
 
     private final IPFSService ipfsService;
-    private JsonObject jsonObject;
+    protected JsonObject jsonObject;
 
 
     /**
@@ -56,7 +56,7 @@ public class UserService implements UserRepository{
      * @param salt the salt used for hashing
      * @return the hashed password
      */
-    private static String hashPassword(String password, String salt) {
+    protected static String hashPassword(String password, String salt) {
         return BCrypt.hashpw(password, salt);
     }
 
@@ -66,7 +66,7 @@ public class UserService implements UserRepository{
      * @return the encrypted key
      * @throws Exception if encryption fails
      */
-    private static String encryptKey(String key) throws Exception {
+    protected static String encryptKey(String key) throws Exception {
         Key secretKey = new SecretKeySpec(KEY.getBytes(), ALGORITHM);
         Cipher cipher = Cipher.getInstance(ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
@@ -80,7 +80,7 @@ public class UserService implements UserRepository{
      * @return the decrypted key
      * @throws Exception if decryption fails
      */
-    private static String decryptKey(String encryptedKey) throws Exception {
+    protected static String decryptKey(String encryptedKey) throws Exception {
         Key secretKey = new SecretKeySpec(KEY.getBytes(), ALGORITHM);
         Cipher cipher = Cipher.getInstance(ALGORITHM);
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
