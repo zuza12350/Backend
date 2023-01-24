@@ -5,7 +5,7 @@
       {
         "name": "Apteczka domowa",
         "description": "Apteczka, która powinna się znajdować w każdym domu.",
-        "items": [
+        "elements": [
           "plaster",
           "opaska elastyczna",
           "nożyczki",
@@ -43,7 +43,7 @@
       {
         "name": "Apteczka samochodowa",
         "description": "Apteczka znajdująca się w każdym samochodzie, ponieważ jest niezbędna przy wypadkach drogowych.",
-        "items": [
+        "elements": [
           "plaster",
           "opaska elastyczna",
           "nożyczki",
@@ -92,7 +92,7 @@
       {
         "name": "Apteczka turystyczna",
         "description": "Łatwo dostępna oraz wygodna w transporcie apteczka, którą zabiera się na róznego rodzaju wyjazdy.",
-        "items": [
+        "elements": [
           "plaster",
           "opaska elastyczna",
           "nożyczki",
@@ -147,7 +147,7 @@
       {
         "name": "Apteczka przemysłowa",
         "description": "Apteczka zawierająca zestaw materiałów opatrunkowych i innych elementów niezbędnych w udzielaniu pierwszej pomocy przygotowany specjalnie pod kątem biur, szkół, fabryk i zakładów przemysłowych.",
-        "items": [
+        "elements": [
           "plaster",
           "opaska elastyczna",
           "nożyczki",
@@ -187,7 +187,7 @@
         "name": "Resuscytacja krążeniowo-oddechowa",
         "description": "Zespół czynności stosowanych w wypadku ustania czynności serca z utratą świadomości i bezdechem.",
         "video": "https://www.youtube.com/watch?v=xvIO9t0MxIM",
-        "procedure": [
+        "elements": [
           "Oceń swoje bezpieczeństwo",
           "Sprawdź, czy poszkodowany reaguje",
           "Głośno wołaj o pomoc",
@@ -203,7 +203,7 @@
         "name": "Manewr Heimlicha",
         "description": "Chwyt Heimlicha czy też rękoczyn Heimlicha wykonujemy w przypadku zadławienia. Stosowany może być u dorosłych, jak również u dzieci.",
         "video": "https://www.youtube.com/watch?v=fW-EtDJcKME",
-        "procedure": [
+        "elements": [
           "Stajemy za poszkodowanym i obejmujemy ramionami jego tułów na wysokości nadbrzusza.",
           "Pochylamy osobę zadławioną do przodu, by ciało obce mogło wydostać się na zewnątrz układu oddechowego.",
           "Zaciskamy jedną rękę w pięść i przykładamy ją w miejscu pomiędzy pępkiem, a wyrostkiem mieczykowatym mostka.",
@@ -215,7 +215,7 @@
         "name": "Kontrola krwawienia",
         "description": "Kontrola krwawienia polega na podjęciu działań mających na celu zatrzymanie lub spowolnienie krwawienia, aby zapobiec dalszej utracie krwi",
         "video": "https://www.youtube.com/watch?v=KDPumgxM6nQ",
-        "procedure": [
+        "elements": [
           "Ocenić nasilenie krwawienia",
           "Załóż rękawiczki, jeśli są dostępne",
           "Zastosuj bezpośredni ucisk na ranę za pomocą czystej tkaniny lub bandaża",
@@ -228,7 +228,7 @@
         "name": "Leczenie udaru cieplnego",
         "description": "Udar cieplny to stan zagrożenia medycznego, który występuje, gdy temperatura ciała wzrasta do niebezpiecznego poziomu. Wymaga on natychmiastowego leczenia.",
         "video": "https://www.youtube.com/watch?v=2J6ZtnUPX5w",
-        "procedure": [
+        "elements": [
           "Natychmiast wezwać pomoc medyczną",
           "Przenieś osobę do chłodnego, zacienionego miejsca",
           "Zdejmij ciężką odzież",
@@ -241,7 +241,7 @@
         "name": "Postępowanie w przypadku wstrząsu",
         "description": "Wstrząs jest poważnym stanem, który występuje, gdy organizm nie otrzymuje wystarczającego przepływu krwi. Może być spowodowany przez różne czynniki, takie jak krwawienie, uraz lub reakcja alergiczna. Wstrząs może zagrażać życiu, jeśli nie jest leczony.",
         "video": "https://www.youtube.com/watch?v=ZXNY3r14DCU",
-        "procedure": [
+        "elements": [
           "Oceń własne bezpieczeństwo",
           "W razie potrzeby wezwij pomoc",
           "Sprawdź puls i oddech poszkodowanego",
@@ -257,7 +257,7 @@
         "name": "Ratowanie tonącego",
         "description": "Zespół czynności stosowanych w sytuacji, gdy osoba tonie lub jest w niebezpieczeństwie utonięcia.",
         "video": "https://www.youtube.com/watch?v=_oSY5uNR_SI",
-        "procedure": [
+        "elements": [
           "Oceń swoje bezpieczeństwo – sprawdź, czy jesteś w stanie bezpiecznie dotrzeć do osoby tonącej, bez ryzyka utonięcia",
           "Głośno wołaj o pomoc i zadzwoń pod numer 112",
           "Jeśli jesteś w stanie dotrzeć do osoby tonącej, użyj narzędzia do ratowania, takiego jak koło ratunkowe lub ręcznik, aby ją wyciągnąć z wody",
@@ -272,7 +272,7 @@
         "name": "Udzielanie pierwszej pomocy przy oparzeniach",
         "description": "Zespół czynności stosowanych w sytuacji, gdy osoba jest oparzona",
         "video": "https://www.youtube.com/watch?v=oCyo1juhuwA",
-        "procedure": [
+        "elements": [
           "Oceń stopień oparzenia – małe oparzenia I stopnia mogą być leczone w domu, natomiast oparzenia II i III stopnia wymagają interwencji lekarza",
           "Zdejmij biżuterię i ubrania z miejsca oparzenia, jeśli są one przyczyną dalszego nacisku na skórę",
           "Ochłodź miejsce oparzenia przez kilka minut, używając letniej lub ciepłej wody",

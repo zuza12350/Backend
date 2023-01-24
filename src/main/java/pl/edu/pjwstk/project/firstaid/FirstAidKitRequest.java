@@ -14,5 +14,5 @@ import java.util.List;
 @Setter
 public class FirstAidKitRequest {
     private String name, description, video;
-    private List<String> items;
+    private List<String> elements;
 }
