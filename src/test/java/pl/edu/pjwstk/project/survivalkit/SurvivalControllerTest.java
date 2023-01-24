@@ -25,9 +25,9 @@ public class SurvivalControllerTest {
     @Test
     public void getSurvivalData_ShouldReturnOkStatusAndCorrectBody() {
         JsonArray expectedBody = new JsonArray();
-        when(service.getSurvivalData()).thenReturn(expectedBody);
+        when(service.getSurvivalTips()).thenReturn(expectedBody);
 
-        ResponseEntity<JsonArray> response = controller.getSurvivalData();
+        ResponseEntity<JsonArray> response = controller.getSurvivalTips();
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(expectedBody, response.getBody());
