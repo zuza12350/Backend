@@ -42,7 +42,7 @@ public class MapService implements MapRepository{
      * @param longitude the longitude of the location point
      * @return true if the location point already exists, false otherwise
      */
-    private boolean locationPointExists(double latitude, double longitude) {
+    boolean locationPointExists(double latitude, double longitude) {
         JsonArray locationPoints = jsonLocations.getAsJsonArray("location_points");
         for (JsonElement location : locationPoints) {
             if (location.getAsJsonObject().get("latitude").getAsDouble() == latitude && location.getAsJsonObject().get("longitude").getAsDouble() == longitude) {

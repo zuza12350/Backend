@@ -99,7 +99,7 @@ public class FirstAidService implements FirstAidRepository {
         loadFirstAidFromFile();
         JsonArray lifeSupportActions = jsonObject.get("support_actions").getAsJsonObject().get("types").getAsJsonArray();
 
-        if (!elementExists(lifeSupportActions, request.getName()))
+        if (elementExists(lifeSupportActions, request.getName()))
             return false;
 
         JsonObject newFirstAidSupportAction = new JsonObject();
@@ -132,6 +132,9 @@ public class FirstAidService implements FirstAidRepository {
         loadFirstAidFromFile();
 
         JsonArray firstAidKits = jsonObject.get("kits").getAsJsonObject().get("types").getAsJsonArray();
+        if (!elementExists(firstAidKits,name))
+            return false;
+
         for (int i = 0; i < firstAidKits.size(); i++) {
             JsonObject firstAidKit = firstAidKits.get(i).getAsJsonObject();
             if (firstAidKit.get("name").getAsString().equals(name)) {
@@ -163,6 +166,9 @@ public class FirstAidService implements FirstAidRepository {
         loadFirstAidFromFile();
 
         JsonArray lifeSupportActions = jsonObject.get("support_actions").getAsJsonObject().get("types").getAsJsonArray();
+        if (!elementExists(lifeSupportActions, name))
+            return false;
+
         for (int i = 0; i < lifeSupportActions.size(); i++) {
             JsonObject lifeSupportAction = lifeSupportActions.get(i).getAsJsonObject();
             if (lifeSupportAction.get("name").getAsString().equals(name)) {
