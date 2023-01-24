@@ -20,6 +20,7 @@ import pl.edu.pjwstk.project.gun.requests.GunTypeRequest;
 public class GunController {
     private final GunService service;
 
+    @CrossOrigin
     @GetMapping("/getGunData/{kind}")
     public ResponseEntity<JsonArray> getGunsData(@PathVariable("kind") String kind) {
         return ResponseEntity.status(HttpStatus.OK).body(service.getGunData(kind));
