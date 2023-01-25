@@ -38,10 +38,11 @@ public class SurvivalService implements SurvivalRepository{
      * @param request bject that represents request of survival gun
      */
     @Override
-    public void addSurvivalTip(SurvivalKitRequest request){
+    public boolean addSurvivalTip(SurvivalKitRequest request){
         setSurvivalKitFromFile();
         this.jsonObject.getAsJsonArray("tips").add(new Gson().toJsonTree(request));
         ipfsService.overrideFile("survivalKit",this.jsonObject);
+        return true;
     }
 
     /**
@@ -49,17 +50,20 @@ public class SurvivalService implements SurvivalRepository{
      * @param name variable which represents name of survival tip
      */
     @Override
-    public void removeSurvivalTip(String name){
+    public boolean removeSurvivalTip(String name){
         var survivalKit = getSurvivalTips();
+        var found = false;
         for(int i=0; i< survivalKit.size();i++){
             if(survivalKit.get(i).getAsJsonObject().get("name").getAsString().equals(name)){
                 survivalKit.remove(i);
+                found=true;
                 break;
             }
         }
         this.jsonObject.remove("tips");
         this.jsonObject.add("tips",survivalKit);
         ipfsService.overrideFile("survivalKit",this.jsonObject);
+        return found;
     }
 
     /**

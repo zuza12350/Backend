@@ -65,7 +65,7 @@ public class GunService implements GunRepository{
      * @param gunRequest object that represents request of gun
      */
     @Override
-    public void addGun(Long categoryId, @Nullable Long subType, GunRequest gunRequest) {
+    public boolean addGun(Long categoryId, @Nullable Long subType, GunRequest gunRequest) {
         setGunsFromFile();
         gunRequest.setType(categoryId);
         if(subType != null){
@@ -73,6 +73,7 @@ public class GunService implements GunRepository{
         }
         this.jsonObject.getAsJsonArray("guns").add(new Gson().toJsonTree(gunRequest));
         ipfsService.overrideFile("guns",this.jsonObject);
+        return true;
     }
 
     /**
@@ -80,13 +81,14 @@ public class GunService implements GunRepository{
      * @param gunTypeRequest object that represents request of gun type
      */
     @Override
-    public void addGunType(GunTypeRequest gunTypeRequest) {
+    public boolean addGunType(GunTypeRequest gunTypeRequest) {
         setGunsFromFile();
         var list = this.jsonObject.getAsJsonArray("guns_types");
-        var lastIndex= Integer.parseInt(String.valueOf(list.get(list.size()-1).getAsJsonObject().get("id")));
-        gunTypeRequest.setId((long) (lastIndex + 1));
+
+        gunTypeRequest.setId((long) (list.size()));
         this.jsonObject.getAsJsonArray("guns_types").add(new Gson().toJsonTree(gunTypeRequest));
         ipfsService.overrideFile("guns",this.jsonObject);
+        return true;
     }
 
     /**
@@ -94,11 +96,13 @@ public class GunService implements GunRepository{
      * @param gunName variable representing the name of the weapon
      */
     @Override
-    public void removeGunByName(String gunName) {
+    public boolean removeGunByName(String gunName) {
         var guns = getGunData("guns");
+        var found = false;
         for(int i=0; i< guns.size();i++){
             if(guns.get(i).getAsJsonObject().get("name").getAsString().equals(gunName)){
                 guns.remove(i);
+                found=true;
                 break;
             }
         }
@@ -106,6 +110,7 @@ public class GunService implements GunRepository{
         this.jsonObject.add("guns",guns);
 
         ipfsService.overrideFile("guns",this.jsonObject);
+        return found;
     }
 
     /**
@@ -113,11 +118,13 @@ public class GunService implements GunRepository{
      * @param gunTypeName ariable representing the name of the weapon type
      */
     @Override
-    public void removeGunType(String gunTypeName) {
+    public boolean removeGunType(String gunTypeName) {
         var guns_types = getGunData("guns_types");
+        var found = false;
         for(int i=0; i< guns_types.size();i++){
             if(guns_types.get(i).getAsJsonObject().get("name").getAsString().equals(gunTypeName)){
                 guns_types.remove(i);
+                found=true;
                 break;
             }
         }
@@ -125,5 +132,6 @@ public class GunService implements GunRepository{
         this.jsonObject.add("guns_types",guns_types);
 
         ipfsService.overrideFile("guns",this.jsonObject);
+        return found;
     }
 }

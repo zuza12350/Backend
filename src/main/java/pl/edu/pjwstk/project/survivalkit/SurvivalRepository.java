@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SurvivalRepository {
     void setSurvivalKitFromFile();
-    void addSurvivalTip(SurvivalKitRequest request);
-    void removeSurvivalTip(String name);
+    boolean addSurvivalTip(SurvivalKitRequest request);
+    boolean removeSurvivalTip(String name);
     JsonArray getSurvivalTips();
 
 }

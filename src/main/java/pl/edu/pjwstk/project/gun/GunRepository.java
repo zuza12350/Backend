@@ -17,8 +17,8 @@ public interface GunRepository {
     void setGunsFromFile();
     JsonObject getWholeGunData();
     JsonArray getGunData(String kind);
-    void addGun(Long categoryId, @Nullable Long subType, GunRequest gunRequest);
-    void addGunType(GunTypeRequest gunTypeRequest);
-    void removeGunByName(String gunName);
-    void removeGunType(String gunTypeName);
+    boolean addGun(Long categoryId, @Nullable Long subType, GunRequest gunRequest);
+    boolean addGunType(GunTypeRequest gunTypeRequest);
+    boolean removeGunByName(String gunName);
+    boolean removeGunType(String gunTypeName);
 }

@@ -43,7 +43,7 @@ public class FirstAidRepositoryTest {
         FirstAidKitRequest request = new FirstAidKitRequest();
         request.setName("Apteczka przemysłowa");
         request.setDescription("Apteczka zawierająca zestaw materiałów opatrunkowych i innych elementów niezbędnych w udzielaniu pierwszej pomocy przygotowany specjalnie pod kątem biur, szkół, fabryk i zakładów przemysłowych.");
-        request.setItems(Arrays.asList("plaster", "opaska elastyczna", "nożyczki", "kompres", "gaza", "chlorheksydyna", "środek odkażający", "chusta trójkątna", "termometr", "płyn do dezynfekcji", "latarka", "rękawice jednorazowe", "leki przeciwbólowe", "leki przeciwgorączkowe", "leki przeciwalergiczne", "leki przeciwskurczowe", "leki rozkurczowe", "leki przeciwhistaminowe", "leki na kaszel", "leki na ból brzucha", "leki na biegunkę", "leki przeciwhistaminowe", "leki przeciwbólowe", "leki uspokajające", "leki na zaparcia", "preparaty na odporność", "środki na oparzenia", "maść na ukąszenia"));
+        request.setElements(Arrays.asList("plaster", "opaska elastyczna", "nożyczki", "kompres", "gaza", "chlorheksydyna", "środek odkażający", "chusta trójkątna", "termometr", "płyn do dezynfekcji", "latarka", "rękawice jednorazowe", "leki przeciwbólowe", "leki przeciwgorączkowe", "leki przeciwalergiczne", "leki przeciwskurczowe", "leki rozkurczowe", "leki przeciwhistaminowe", "leki na kaszel", "leki na ból brzucha", "leki na biegunkę", "leki przeciwhistaminowe", "leki przeciwbólowe", "leki uspokajające", "leki na zaparcia", "preparaty na odporność", "środki na oparzenia", "maść na ukąszenia"));
 
         when(firstAidRepository.addFirstAidKitToFile(request)).thenReturn(true);
 
@@ -56,7 +56,7 @@ public class FirstAidRepositoryTest {
         LifeSupportActionRequest request = new LifeSupportActionRequest();
         request.setName("CPR");
         request.setDescription("Zespół czynności stosowanych w wypadku ustania czynności serca z utratą świadomości i bezdechem.");
-        request.setProcedure(Arrays.asList("Oceń swoje bezpieczeństwo",
+        request.setElements(Arrays.asList("Oceń swoje bezpieczeństwo",
                 "Sprawdź, czy poszkodowany reaguje",
                 "Głośno wołaj o pomoc",
                 "Udrożnij drogi oddechowe i sprawdź oddech – lekko odchyl głowę do tyłu i unieś żuchwę",

@@ -32,13 +32,13 @@ public class SurvivalController {
 
 
     @PostMapping("/addSurvivalKit")
-    public void addSurvivalTip(@RequestBody SurvivalKitRequest request){
-        service.addSurvivalTip(request);
+    public boolean addSurvivalTip(@RequestBody SurvivalKitRequest request){
+        return service.addSurvivalTip(request);
     }
 
     @DeleteMapping("/removeSurvivalTip")
-    public void removeSurvivalTip(@RequestBody String name){
-       service.removeSurvivalTip(name);
+    public boolean removeSurvivalTip(@RequestBody String name){
+       return service.removeSurvivalTip(name);
     }
 
 }
