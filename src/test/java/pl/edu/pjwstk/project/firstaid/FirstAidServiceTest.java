@@ -53,7 +53,7 @@ public class FirstAidServiceTest {
         lifeSupportActionRequest.setName("name");
         lifeSupportActionRequest.setDescription("description");
         lifeSupportActionRequest.setVideo("video");
-        lifeSupportActionRequest.setProcedure(new ArrayList<>());
+        lifeSupportActionRequest.setElements(new ArrayList<>());
 
         JsonObject jsonObject = new JsonObject();
         JsonObject supportActions = new JsonObject();
@@ -95,7 +95,7 @@ public class FirstAidServiceTest {
         request.setName("test");
         request.setDescription("test");
         request.setVideo("test");
-        request.setProcedure(new ArrayList<>());
+        request.setElements(new ArrayList<>());
 
         boolean result = firstAidService.editLifeSupportActionInFile("test", request);
 
@@ -112,7 +112,7 @@ public class FirstAidServiceTest {
         FirstAidKitRequest request = new FirstAidKitRequest();
         request.setName("name");
         request.setDescription("description");
-        request.setItems(new ArrayList<>());
+        request.setElements(new ArrayList<>());
 
         JsonObject jsonObject = new JsonObject();
         JsonObject kits = new JsonObject();
@@ -155,7 +155,7 @@ public class FirstAidServiceTest {
         ArrayList<String> itemsList = new ArrayList<>();
         itemsList.add("item1");
         itemsList.add("item2");
-        request.setItems(itemsList);
+        request.setElements(itemsList);
 
         assertTrue(firstAidService.editFirstAidKitInFile("kit", request));
     }
@@ -171,7 +171,7 @@ public class FirstAidServiceTest {
         lifeSupportActionRequest.setName("name");
         lifeSupportActionRequest.setDescription("description");
         lifeSupportActionRequest.setVideo("video");
-        lifeSupportActionRequest.setProcedure(new ArrayList<>());
+        lifeSupportActionRequest.setElements(new ArrayList<>());
 
         JsonObject jsonObject = new JsonObject();
         JsonObject supportActions = new JsonObject();
@@ -197,7 +197,7 @@ public class FirstAidServiceTest {
         lifeSupportActionRequest.setName("name");
         lifeSupportActionRequest.setDescription("description");
         lifeSupportActionRequest.setVideo("video");
-        lifeSupportActionRequest.setProcedure(new ArrayList<>());
+        lifeSupportActionRequest.setElements(new ArrayList<>());
 
         JsonObject supportActions = new JsonObject();
         JsonArray types = new JsonArray();
@@ -228,7 +228,7 @@ public class FirstAidServiceTest {
         FirstAidKitRequest request = new FirstAidKitRequest();
         request.setName("test");
         request.setDescription("test");
-        request.setItems(new ArrayList<>());
+        request.setElements(new ArrayList<>());
         JsonObject jsonObject = new JsonObject();
         JsonObject kits = new JsonObject();
         JsonArray types = new JsonArray();
@@ -251,7 +251,7 @@ public class FirstAidServiceTest {
         FirstAidKitRequest request = new FirstAidKitRequest();
         request.setName("test");
         request.setDescription("test");
-        request.setItems(new ArrayList<>());
+        request.setElements(new ArrayList<>());
         JsonObject jsonObject = new JsonObject();
         JsonObject kits = new JsonObject();
         JsonArray types = new JsonArray();
