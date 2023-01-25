@@ -7,11 +7,11 @@ databaseChangeLog:
         stripComments: true
         splitStatements: false
         path: file_holder.sql
-#  - changeSet:
-#      id: default_inserts.sql
-#      author: Zuzanna Borkowska
-#      sqlFile:
-#        relativeToChangelogFile: true
-#        stripComments: true
-#        splitStatements: false
-#        path: default_inserts.sql
+  - changeSet:
+      id: default_inserts.sql
+      author: Zuzanna Borkowska
+      sqlFile:
+        relativeToChangelogFile: true
+        stripComments: true
+        splitStatements: false
+        path: default_inserts.sql

@@ -32,22 +32,22 @@ public class GunController {
         return ResponseEntity.status(HttpStatus.OK).body(service.getWholeGunData());
     }
     @PostMapping(value = {"/addGun/{categoryId}", "/addGun/{categoryId}/{subType}"})
-    public void addGun(@PathVariable(value = "categoryId") Long categoryId,
+    public boolean addGun(@PathVariable(value = "categoryId") Long categoryId,
                        @PathVariable(value = "subType",required = false) Long subType,
                        @RequestBody GunRequest gunRequest){
-        service.addGun(categoryId,subType,gunRequest);
+        return service.addGun(categoryId,subType,gunRequest);
     }
     @PostMapping("/addGunType")
-    public void addGunType(@RequestBody GunTypeRequest gunTypeRequest){
-        service.addGunType(gunTypeRequest);
+    public boolean addGunType(@RequestBody GunTypeRequest gunTypeRequest){
+        return service.addGunType(gunTypeRequest);
     }
 
     @DeleteMapping("/removeGun")
-    public void removeGun(@RequestBody String gunName){
-        service.removeGunByName(gunName);
+    public boolean removeGun(@RequestBody String gunName){
+        return service.removeGunByName(gunName);
     }
     @DeleteMapping("/removeGunType")
-    public void removeGunType(@RequestBody String gunTypeName){
-        service.removeGunType(gunTypeName);
+    public boolean removeGunType(@RequestBody String gunTypeName){
+        return service.removeGunType(gunTypeName);
     }
 }
