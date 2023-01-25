@@ -531,7 +531,131 @@
       "name": "Szpital",
       "latitude": 50.766876,
       "longitude": 16.300941
+    },
+    {
+      "name": "szpital",
+      "latitude": 50.105911,
+      "longitude": 18.749138
+    },
+    {
+      "name": "zbiórka żywności",
+      "latitude": 50.111152 ,
+      "longitude":19.108672
+    },
+    {
+      "name": "szpital",
+      "latitude": 50.377657,
+      "longitude":19.214899
+    },
+    {
+      "name": "zbiórka żywności",
+      "latitude": 50.502556,
+      "longitude": 18.871707
+    },
+    {
+      "name": "bunkier",
+      "latitude": 50.006232,
+      "longitude":19.386494
+    },
+    {
+      "name": "szpital",
+      "latitude": 49.774603,
+      "longitude":19.574433
+    },
+    {
+      "name": "szpital",
+      "latitude": 49.647790,
+      "longitude":19.860426
+    },
+    {
+      "name": "zbiórka żywności",
+      "latitude": 49.520647,
+      "longitude": 20.268988
+    },
+    {
+      "name": "bunkier",
+      "latitude": 49.488809,
+      "longitude": 20.742920
+    },
+    {
+      "name": "szpital",
+      "latitude": 49.732369,
+      "longitude": 20.391556
+    },
+    {
+      "name": "zbiórka żywności",
+      "latitude": 49.488809,
+      "longitude": 20.849146
+    },
+    {
+      "name": "bunkier",
+      "latitude": 49.795706,
+      "longitude": 20.898173
+    },
+    {
+      "name": "szpital",
+      "latitude": 49.964201,
+      "longitude": 20.693892
+    },
+    {
+      "name": "zbiórka żywności",
+      "latitude": 49.711238,
+      "longitude": 21.143310
+    },
+    {
+      "name": "bunkier",
+      "latitude": 49.642499,
+      "longitude": 21.502845
+    },
+    {
+      "name": "szpital",
+      "latitude": 49.853692,
+      "longitude": 21.535529
+    },
+    {
+      "name": "zbiórka żywności",
+      "latitude": 49.642499,
+      "longitude": 21.560043
+    },
+    {
+      "name": "bunkier",
+      "latitude": 49.525951,
+      "longitude": 21.886893
+    },
+    {
+      "name": "szpital",
+      "latitude": 49.837885,
+      "longitude": 21.960434
+    },
+    {
+      "name": "zbiórka żywności",
+      "latitude": 49.937912,
+      "longitude": 22.303626
+    },
+    {
+      "name": "bunkier",
+      "latitude": 49.890556,
+      "longitude": 22.638646
+    },
+    {
+      "name": "szpital",
+      "latitude": 50.095428,
+      "longitude": 22.769386
+    },
+    {
+      "name": "zbiórka żywności",
+      "latitude": 50.346381,
+      "longitude": 22.450708
+    },
+    {
+      "name": "bunkier",
+      "latitude": 50.450555,
+      "longitude": 21.747982
+    },
+    {
+      "name": "szpital",
+      "latitude": 50.476563,
+      "longitude": 21.077940
     }
-
   ]
 }
