@@ -9,10 +9,23 @@ services:
       POSTGRES_DB: pjwstk
       POSTGRES_USER: pjwstk
       POSTGRES_PASSWORD: pjwstk!123
-#  server:
-#    build: .
-#    restart: always
-#    ports:
-#    - 8081:8081
-#    depends_on:
-#      - db
+
+  cluster:
+    image: ipfs/ipfs-cluster
+    volumes:
+      - /var/ipfs/cluster:/data/ipfs-cluster
+#    env_file: /var/data/config/ipfs/ipfs.env
+    ports:
+      - 9095:9095
+      - 9096:9096
+    depends_on:
+      - daemon
+
+  daemon:
+    image: ipfs/go-ipfs
+    ports:
+      - 4001:4001
+      - 5001:5001
+      - 8080:8080
+    volumes:
+      - /var/ipfs/daemon:/data/ipfs
