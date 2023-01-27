@@ -57,4 +57,6 @@ public class GunRequest {
     @SerializedName("video")
     @Expose
     private String video;
+
+    private String createdBy;
 }

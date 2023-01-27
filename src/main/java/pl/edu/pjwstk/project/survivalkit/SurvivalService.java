@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.edu.pjwstk.project.config.IPFSService;
 import pl.edu.pjwstk.project.exceptions.ElementNotFoundException;
+import pl.edu.pjwstk.project.securityconfig.UserService;
 
 import java.nio.charset.StandardCharsets;
 
@@ -21,6 +22,7 @@ import java.nio.charset.StandardCharsets;
 @RequiredArgsConstructor
 public class SurvivalService implements SurvivalRepository{
     private final IPFSService ipfsService;
+    private final UserService userService;
     private JsonObject jsonObject;
 
     /**
@@ -40,6 +42,7 @@ public class SurvivalService implements SurvivalRepository{
     @Override
     public boolean addSurvivalTip(SurvivalKitRequest request){
         setSurvivalKitFromFile();
+        request.setCreatedBy(userService.getUsernameOfCurrentLoggedUser());
         this.jsonObject.getAsJsonArray("tips").add(new Gson().toJsonTree(request));
         ipfsService.overrideFile("survivalKit",this.jsonObject);
         return true;

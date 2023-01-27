@@ -11,6 +11,7 @@ import pl.edu.pjwstk.project.config.IPFSService;
 import pl.edu.pjwstk.project.exceptions.ElementNotFoundException;
 import pl.edu.pjwstk.project.gun.requests.GunRequest;
 import pl.edu.pjwstk.project.gun.requests.GunTypeRequest;
+import pl.edu.pjwstk.project.securityconfig.UserService;
 
 import java.nio.charset.StandardCharsets;
 /**
@@ -23,6 +24,7 @@ import java.nio.charset.StandardCharsets;
 @RequiredArgsConstructor
 public class GunService implements GunRepository{
     private final IPFSService ipfsService;
+    private final UserService userService;
     private JsonObject jsonObject;
 
     /**
@@ -71,6 +73,7 @@ public class GunService implements GunRepository{
         if(subType != null){
             gunRequest.setSubType(subType);
         }
+        gunRequest.setCreatedBy(userService.getUsernameOfCurrentLoggedUser());
         this.jsonObject.getAsJsonArray("guns").add(new Gson().toJsonTree(gunRequest));
         ipfsService.overrideFile("guns",this.jsonObject);
         return true;
@@ -86,6 +89,7 @@ public class GunService implements GunRepository{
         var list = this.jsonObject.getAsJsonArray("guns_types");
 
         gunTypeRequest.setId((long) (list.size()));
+        gunTypeRequest.setCreatedBy(userService.getUsernameOfCurrentLoggedUser());
         this.jsonObject.getAsJsonArray("guns_types").add(new Gson().toJsonTree(gunTypeRequest));
         ipfsService.overrideFile("guns",this.jsonObject);
         return true;
