@@ -36,6 +36,13 @@ public class MapController {
         return ResponseEntity.status(HttpStatus.OK).body(service.getLocations(latitude, longitude));
     }
 
+    @CrossOrigin
+    @GetMapping("/isUserInPoland/{latitude}/{longitude}")
+    public boolean isUserInPoland(
+            @PathVariable("latitude") double latitude, @PathVariable("longitude") double longitude) {
+        return service.isUserInPoland(latitude,longitude);
+    }
+
     /**
      * Add a new location with the given name, latitude, and longitude.
      *

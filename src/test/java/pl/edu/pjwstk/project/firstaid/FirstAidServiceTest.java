@@ -4,8 +4,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import pl.edu.pjwstk.project.config.IPFSService;
+import pl.edu.pjwstk.project.securityconfig.UserService;
 
 import java.util.ArrayList;
 
@@ -17,13 +20,19 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class FirstAidServiceTest {
 
+    @Mock
+    private IPFSService ipfsService;
+    @Mock
+    private UserService userService;
+
+    @InjectMocks
+    private FirstAidService firstAidService;
+
     /**
      * Should return false when the life support action is not found
      */
     @Test
     public void removeLifeSupportActionFromFileWhenLifeSupportActionIsNotFoundThenReturnFalse() {
-        IPFSService ipfsService = mock(IPFSService.class);
-        FirstAidService firstAidService = new FirstAidService(ipfsService);
         JsonObject supportActions = new JsonObject();
         JsonArray types = new JsonArray();
         JsonObject type = new JsonObject();
@@ -47,8 +56,6 @@ public class FirstAidServiceTest {
      */
     @Test
     public void editLifeSupportActionInFileWhenLifeSupportActionDoesNotExistThenReturnFalse() {
-        IPFSService ipfsService = mock(IPFSService.class);
-        FirstAidService firstAidService = new FirstAidService(ipfsService);
         LifeSupportActionRequest lifeSupportActionRequest = new LifeSupportActionRequest();
         lifeSupportActionRequest.setName("name");
         lifeSupportActionRequest.setDescription("description");
@@ -74,8 +81,6 @@ public class FirstAidServiceTest {
      */
     @Test
     public void editLifeSupportActionInFileWhenLifeSupportActionExistsThenReturnTrue() {
-        IPFSService ipfsService = mock(IPFSService.class);
-        FirstAidService firstAidService = new FirstAidService(ipfsService);
         JsonObject jsonObject = new JsonObject();
         JsonObject supportActions = new JsonObject();
         JsonArray types = new JsonArray();
@@ -107,8 +112,7 @@ public class FirstAidServiceTest {
      */
     @Test
     public void editFirstAidKitInFileWhenKitDoesNotExistThenReturnFalse() {
-        IPFSService ipfsService = mock(IPFSService.class);
-        FirstAidService firstAidService = new FirstAidService(ipfsService);
+        FirstAidService firstAidService = new FirstAidService(ipfsService, userService);
         FirstAidKitRequest request = new FirstAidKitRequest();
         request.setName("name");
         request.setDescription("description");
@@ -130,8 +134,6 @@ public class FirstAidServiceTest {
      */
     @Test
     public void editFirstAidKitInFileWhenKitExistsThenReturnTrue() {
-        IPFSService ipfsService = mock(IPFSService.class);
-        FirstAidService firstAidService = new FirstAidService(ipfsService);
 
         JsonObject jsonObject = new JsonObject();
         JsonObject kits = new JsonObject();
@@ -165,8 +167,6 @@ public class FirstAidServiceTest {
      */
     @Test
     public void addLifeSupportActionToFileWhenLifeSupportActionIsNotInTheFileThenReturnTrue() {
-        IPFSService ipfsService = mock(IPFSService.class);
-        FirstAidService firstAidService = new FirstAidService(ipfsService);
         LifeSupportActionRequest lifeSupportActionRequest = new LifeSupportActionRequest();
         lifeSupportActionRequest.setName("name");
         lifeSupportActionRequest.setDescription("description");
@@ -191,8 +191,6 @@ public class FirstAidServiceTest {
      */
     @Test
     public void addLifeSupportActionToFileWhenLifeSupportActionIsAlreadyInTheFileThenReturnFalse() {
-        IPFSService ipfsService = mock(IPFSService.class);
-        FirstAidService firstAidService = new FirstAidService(ipfsService);
         LifeSupportActionRequest lifeSupportActionRequest = new LifeSupportActionRequest();
         lifeSupportActionRequest.setName("name");
         lifeSupportActionRequest.setDescription("description");
@@ -223,8 +221,6 @@ public class FirstAidServiceTest {
      */
     @Test
     public void addFirstAidKitToFileWhenKitDoesNotExistThenReturnTrue() {
-        IPFSService ipfsService = mock(IPFSService.class);
-        FirstAidService firstAidService = new FirstAidService(ipfsService);
         FirstAidKitRequest request = new FirstAidKitRequest();
         request.setName("test");
         request.setDescription("test");
@@ -246,8 +242,6 @@ public class FirstAidServiceTest {
      */
     @Test
     public void addFirstAidKitToFileWhenKitAlreadyExistsThenReturnFalse() {
-        IPFSService ipfsService = mock(IPFSService.class);
-        FirstAidService firstAidService = new FirstAidService(ipfsService);
         FirstAidKitRequest request = new FirstAidKitRequest();
         request.setName("test");
         request.setDescription("test");
@@ -272,8 +266,7 @@ public class FirstAidServiceTest {
     @Test
     public void elementExists_ElementExists_ReturnsTrue() {
         //arrange
-        IPFSService ipfsServiceMock = mock(IPFSService.class);
-        FirstAidService firstAidService = new FirstAidService(ipfsServiceMock);
+
 
         JsonArray array = new JsonArray();
         JsonObject element1 = new JsonObject();
@@ -293,8 +286,6 @@ public class FirstAidServiceTest {
     @Test
     public void elementExists_ElementDoesNotExist_ReturnsFalse() {
         //arrange
-        IPFSService ipfsServiceMock = mock(IPFSService.class);
-        FirstAidService firstAidService = new FirstAidService(ipfsServiceMock);
 
         JsonArray array = new JsonArray();
         JsonObject element1 = new JsonObject();
@@ -314,8 +305,6 @@ public class FirstAidServiceTest {
     @Test
     public void elementExists_ArrayIsEmpty_ReturnsFalse() {
         //arrange
-        IPFSService ipfsServiceMock = mock(IPFSService.class);
-        FirstAidService firstAidService = new FirstAidService(ipfsServiceMock);
 
         JsonArray array = new JsonArray();
         //act

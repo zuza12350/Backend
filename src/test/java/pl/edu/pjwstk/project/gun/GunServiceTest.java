@@ -5,11 +5,14 @@ import com.google.gson.JsonObject;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import pl.edu.pjwstk.project.config.IPFSService;
 import pl.edu.pjwstk.project.exceptions.ElementNotFoundException;
 import pl.edu.pjwstk.project.gun.requests.GunRequest;
 import pl.edu.pjwstk.project.gun.requests.GunTypeRequest;
+import pl.edu.pjwstk.project.securityconfig.UserService;
 
 
 import static org.junit.Assert.assertFalse;
@@ -20,10 +23,18 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GunServiceTest {
+
+    @Mock
+    private UserService userService;
+
+    @Mock
+    private IPFSService ipfsService;
+
+    @InjectMocks
+    private GunService gunService;
+
     @Test
     public void addGunDataTest() throws ElementNotFoundException {
-        IPFSService ipfsService = mock(IPFSService.class);
-        GunService gunService = new GunService(ipfsService);
         GunRequest gunRequest = new GunRequest();
         gunRequest.setName("AK");
         JsonObject jsonObject = new JsonObject();
@@ -37,8 +48,6 @@ public class GunServiceTest {
     }
     @Test
     public void addGunTypeTest() throws ElementNotFoundException {
-        IPFSService ipfsService = mock(IPFSService.class);
-        GunService gunService = new GunService(ipfsService);
         GunTypeRequest gunTypeRequest = new GunTypeRequest();
         gunTypeRequest.setDescription("abc");
         gunTypeRequest.setName("someName");
@@ -54,8 +63,6 @@ public class GunServiceTest {
     }
     @Test
     public void removeGunTypeByNameIfNotFoundThenReturnFalse() throws ElementNotFoundException {
-        IPFSService ipfsService = mock(IPFSService.class);
-        GunService gunService = new GunService(ipfsService);
         GunTypeRequest gunTypeRequest = new GunTypeRequest();
         gunTypeRequest.setDescription("abc");
         gunTypeRequest.setName("someName");
@@ -71,10 +78,6 @@ public class GunServiceTest {
     }
     @Test
     public void removeGunFromFileWhenGunIsNotFoundThenReturnFalse() {
-        IPFSService ipfsService = mock(IPFSService.class);
-        GunService gunService = new GunService(ipfsService);
-
-
         JsonObject jsonObject = new JsonObject();
         jsonObject.add("guns", new JsonArray());
         when(ipfsService.loadFile("guns")).thenReturn(jsonObject.toString().getBytes());
@@ -84,8 +87,6 @@ public class GunServiceTest {
 
     @Test
     public void removeGunTypeWhenGunTypeIsFoundThenReturnTrue() {
-        IPFSService ipfsService = mock(IPFSService.class);
-        GunService gunService = new GunService(ipfsService);
 
         JsonObject jsonObject = new JsonObject();
         JsonObject gunType = new JsonObject();
@@ -100,8 +101,6 @@ public class GunServiceTest {
     }
     @Test
     public void removeGunTypeWhenGunIsFoundThenReturnTrue() {
-        IPFSService ipfsService = mock(IPFSService.class);
-        GunService gunService = new GunService(ipfsService);
 
         JsonObject jsonObject = new JsonObject();
         JsonArray jsonArray = new JsonArray();
