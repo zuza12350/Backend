@@ -75,6 +75,25 @@ public class MapService implements MapRepository{
     }
 
     /**
+     * Checks if user is located in Poland.
+     * Important note!! - It is not very accurate.
+     *
+     * @param userLatitude the latitude of the user
+     * @param userLongitude the longitude of the user
+     * @return true if user is located in Poland, false otherwise
+     */
+    public boolean isUserInPoland(double userLatitude, double userLongitude) {
+        // Coordinates for the bounding box of Poland
+        double minLatitude = 49.0;
+        double maxLatitude = 54.8;
+        double minLongitude = 14.1;
+        double maxLongitude = 24.2;
+
+        // Check if the user's coordinates are within the bounding box of Poland
+        return userLatitude >= minLatitude && userLatitude <= maxLatitude && userLongitude >= minLongitude && userLongitude <= maxLongitude;
+    }
+
+    /**
      * Method used to parse a list of Location objects into a JsonObject.
      * @param locations the list of Location objects
      * @return JsonObject containing all location points
