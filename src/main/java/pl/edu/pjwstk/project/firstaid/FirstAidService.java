@@ -4,6 +4,7 @@ import com.google.gson.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.edu.pjwstk.project.config.IPFSService;
+import pl.edu.pjwstk.project.securityconfig.UserService;
 
 import java.nio.charset.StandardCharsets;
 
@@ -20,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 public class FirstAidService implements FirstAidRepository {
 
     private final IPFSService ipfsService;
+    private final UserService userService;
     private JsonObject jsonObject;
 
     /**
@@ -80,6 +82,7 @@ public class FirstAidService implements FirstAidRepository {
             itemsArray.add(JsonParser.parseString(item));
         }
         newFirstAidKit.add("elements", itemsArray);
+        newFirstAidKit.addProperty("createdBy", userService.getUsernameOfCurrentLoggedUser());
 
         firstAidKits.add(newFirstAidKit);
         ipfsService.overrideFile("firstAid", this.jsonObject);
@@ -111,7 +114,7 @@ public class FirstAidService implements FirstAidRepository {
             procedureArray.add(JsonParser.parseString(procedure));
         }
         newFirstAidSupportAction.add("elements", procedureArray);
-
+        newFirstAidSupportAction.addProperty("createdBy", userService.getUsernameOfCurrentLoggedUser());
 
         lifeSupportActions.add(newFirstAidSupportAction);
         ipfsService.overrideFile("firstAid", this.jsonObject);
@@ -145,6 +148,7 @@ public class FirstAidService implements FirstAidRepository {
                     itemsArray.add(JsonParser.parseString(item));
                 }
                 firstAidKit.add("elements", itemsArray);
+                firstAidKit.addProperty("editedBy", userService.getUsernameOfCurrentLoggedUser());
                 break;
             }
         }
@@ -181,6 +185,7 @@ public class FirstAidService implements FirstAidRepository {
                     procedureArray.add(JsonParser.parseString(procedure));
                 }
                 lifeSupportAction.add("elements", procedureArray);
+                lifeSupportAction.addProperty("editedBy", userService.getUsernameOfCurrentLoggedUser());
                 break;
             }
         }

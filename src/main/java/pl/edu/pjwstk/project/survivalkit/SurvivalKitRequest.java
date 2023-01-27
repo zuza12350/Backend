@@ -24,4 +24,5 @@ public class SurvivalKitRequest {
     @SerializedName("guide")
     @Expose
     private String guide;
+    private String createdBy;
 }

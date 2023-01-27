@@ -26,4 +26,5 @@ public class GunTypeRequest {
     @SerializedName("description")
     @Expose
     private String description;
+    private String createdBy;
 }

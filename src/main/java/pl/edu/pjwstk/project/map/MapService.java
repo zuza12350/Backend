@@ -7,6 +7,7 @@ import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.edu.pjwstk.project.config.IPFSService;
+import pl.edu.pjwstk.project.securityconfig.UserService;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -26,7 +27,10 @@ public class MapService implements MapRepository{
 
     private final IPFSService ipfsService;
 
+    private final UserService userService;
+
     private JsonObject jsonLocations;
+
 
     /**
      * Method used to set the location points from a file on IPFS.
@@ -98,18 +102,20 @@ public class MapService implements MapRepository{
      */
     @Override
     public void addLocationPoint(String name, double latitude, double longitude) {
+        setLocationPointsFromFile();
+
         if (locationPointExists(latitude, longitude)) return;
 
-        setLocationPointsFromFile();
 
         JsonObject newLocation = new JsonObject();
         newLocation.addProperty("name", name);
         newLocation.addProperty("latitude", latitude);
         newLocation.addProperty("longitude", longitude);
+        newLocation.addProperty("createdBy", userService.getUsernameOfCurrentLoggedUser());
 
         jsonLocations.getAsJsonArray("location_points").add(newLocation);
 
-        ipfsService.overrideFile("mapLocations.json", jsonLocations);
+        ipfsService.overrideFile("mapLocations", jsonLocations);
     }
 
     /**
