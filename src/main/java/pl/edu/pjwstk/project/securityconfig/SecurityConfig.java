@@ -47,6 +47,7 @@ public class SecurityConfig {
                         "/**/createUser/**",
                         "/**/getFirstAidFile/**",
                         "/**/getLocations/**",
+                        "/**/isUserInPoland/**",
                         "/**/getSurvivalData/**"
                 ).permitAll()
                 .anyRequest()
