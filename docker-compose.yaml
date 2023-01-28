@@ -11,10 +11,10 @@ services:
       POSTGRES_PASSWORD: pjwstk!123
 
   cluster:
+    restart: always
     image: ipfs/ipfs-cluster
     volumes:
       - /var/ipfs/cluster:/data/ipfs-cluster
-#    env_file: /var/data/config/ipfs/ipfs.env
     ports:
       - 9095:9095
       - 9096:9096
@@ -22,6 +22,7 @@ services:
       - daemon
 
   daemon:
+    restart: always
     image: ipfs/go-ipfs
     ports:
       - 4001:4001

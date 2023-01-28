@@ -37,7 +37,7 @@ public class SurvivalService implements SurvivalRepository{
     /**
      * The method is responsible for adding survival tip specified in the argument object.
      *
-     * @param request bject that represents request of survival gun
+     * @param request object that represents request of survival gun
      */
     @Override
     public boolean addSurvivalTip(SurvivalKitRequest request){
