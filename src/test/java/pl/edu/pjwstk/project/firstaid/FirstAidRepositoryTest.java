@@ -3,7 +3,6 @@ package pl.edu.pjwstk.project.firstaid;
 import com.google.gson.JsonObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -19,9 +18,6 @@ public class FirstAidRepositoryTest {
 
     @Mock
     private FirstAidRepository firstAidRepository;
-
-    @InjectMocks
-    private FirstAidService firstAidService;
 
     @Test
     public void testSetFirstAidFromFile() {

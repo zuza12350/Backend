@@ -12,9 +12,7 @@ import pl.edu.pjwstk.project.securityconfig.UserService;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -313,8 +311,6 @@ public class FirstAidServiceTest {
         //assert
         assertFalse(result);
     }
-
-
 
 
 }
