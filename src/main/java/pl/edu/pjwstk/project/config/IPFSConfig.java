@@ -22,7 +22,7 @@ public class IPFSConfig {
     IPFS ipfs;
     @SneakyThrows
     public IPFSConfig() {
-        ipfs = new IPFS("localhost", 5001);
+        ipfs = new IPFS("127.0.0.1", 4001);
     }
 
 }
