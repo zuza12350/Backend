@@ -69,30 +69,4 @@ public class MapServiceTest {
         assertThat(result.getAsJsonArray("location_points").size()).isEqualTo(0);
     }
 
-//    @Test
-//    public void addLocationPoint_shouldReturnIfLocationPointAlreadyExists() throws Exception {
-//        // given
-//        UserService userService = mock(UserService.class);
-//        MapService mapService = new MapService(ipfsService, userService);
-//        JsonObject jsonLocations = new JsonObject();
-//        jsonLocations.add("location_points", new JsonArray());
-//        JsonObject locationPoint = new JsonObject();
-//        locationPoint.addProperty("latitude", 51.10);
-//        locationPoint.addProperty("longitude", 17.03);
-//        jsonLocations.getAsJsonArray("location_points").add(locationPoint);
-//        Field field = mapService.getClass().getDeclaredField("jsonLocations");
-//        field.setAccessible(true);
-//        field.set(mapService, jsonLocations);
-//
-//
-//
-//        // when
-//        mapService.addLocationPoint("Location 1", 51.10, 17.03);
-//
-//        // then
-//        assertThat(jsonLocations.getAsJsonArray("location_points").size()).isEqualTo(1);
-//    }
-
-
-
 }
