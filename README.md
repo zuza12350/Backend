@@ -13,12 +13,25 @@ Celem projektu jest zrealizowanie funkcjonlaności projektu inżynierskiego - St
 W zakres tych funkcjonlaności wchodzi utworzenie połączenia z siecią IPFS, realizacja endpointów do pozyskiwania, zmieniania i usuwania danych dotyczących informacji o broni, pierwszej pomocy, wskazówek dotyczących przetrwania i funkcjonalności mapy.
 
 ## Instrukcje dotyczące instalacji i uruchamiania projektu
-Aby uruchomić projekt najpierw należy zainstalować aplikację [IPFS Desktop](https://docs.ipfs.tech/install/ipfs-desktop/#windows).
-Następnie należy skolonować repozytorium i uruchomić projekt. Aplikacja będzie uruchomi się na localhost:8081.
+Aby uruchomić projekt najpierw należy posiadać zainstalowanego [Dockera](https://www.docker.com/products/docker-desktop/) na swoim komputerze.
+Następnie należy skolonować oba repozytoria (front-end i backend aplikacji) i kolejno wywołać komendy:
+####a.  w folderze zawierającym, projekt backendu aplikacji:
+```bash
+docker build -t back-end .
+```
+#### b.w folderze zawierającym frontend aplikacji należy wpisać:
+```bash
+docker build -t front-end .
+```
+Ostatni krok uruchomienia aplikacji polega na wywołaniu polecenia w folderze zawierającym oba projekty:
+```bash
+docker-compose up -d
+```
+oraz uruchomieniu aplikacji w przeglądarce pod adresem [localhost:3000](http://localhost:3000/)
 
 ## Linki do dokumentacji i innych zasobów
 - [Podłączenie do sieci IPFS](https://github.com/ipfs-shipyard/java-ipfs-http-client)
-- 
+- [Podłączenie backendu aplikacji do PostgreSQL](https://www.baeldung.com/spring-boot-postgresql-docker)
 
 ## Informacje o autorach i licencji projektu
 Autorami repozytorium są:
