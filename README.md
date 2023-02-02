@@ -1,6 +1,5 @@
 # Backend Java Spring Boot
 
-//TODO(21.12.2022) README.md 
 
 ## Kontekst
 * [Opis i cel projektu](#opis-i-cel-projektu)
