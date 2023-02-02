@@ -1,4 +1,6 @@
-FROM openjdk:11-jdk-slim
+FROM openjdk:11
 
-COPY target/Engineer-1.0-SNAPSHOT.jar Engineer-1.0-SNAPSHOT.jar
-ENTRYPOINT ["java","-jar","/Engineer-1.0-SNAPSHOT.jar"]
+ADD target/bunker-app.jar bunker-app.jar
+ENTRYPOINT ["java","-jar","bunker-app.jar"]
+
+EXPOSE 8081
