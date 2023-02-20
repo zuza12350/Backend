@@ -41,7 +41,6 @@ public class SecurityConfig {
                 .cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/**/auth",
-                        "/**/upload/**",
                         "/**/getGunData/**",
                         "/**/getWholeGunData/**",
                         "/**/find",
