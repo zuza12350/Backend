@@ -2,7 +2,6 @@ package pl.edu.pjwstk.project.gun;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -14,19 +13,15 @@ import pl.edu.pjwstk.project.gun.requests.GunRequest;
 import pl.edu.pjwstk.project.gun.requests.GunTypeRequest;
 import pl.edu.pjwstk.project.securityconfig.UserService;
 
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 
 @RunWith(MockitoJUnitRunner.class)
 public class GunServiceTest {
-
     @Mock
     private UserService userService;
-
     @Mock
     private IPFSService ipfsService;
 
@@ -40,6 +35,7 @@ public class GunServiceTest {
         JsonObject jsonObject = new JsonObject();
         jsonObject.add("guns",new JsonArray());
         when(ipfsService.loadFile("guns")).thenReturn(jsonObject.toString().getBytes());
+        when(userService.getUsernameOfCurrentLoggedUser()).thenReturn("test");
 
         boolean addGun = gunService.addGun(1L,1L,gunRequest);
 
@@ -55,6 +51,7 @@ public class GunServiceTest {
         JsonObject jsonObject = new JsonObject();
         jsonObject.add("guns_types",new JsonArray());
         when(ipfsService.loadFile("guns")).thenReturn(jsonObject.toString().getBytes());
+        when(userService.getUsernameOfCurrentLoggedUser()).thenReturn("test");
 
         boolean addGunType = gunService.addGunType(gunTypeRequest);
 
@@ -112,7 +109,5 @@ public class GunServiceTest {
         boolean result = gunService.removeGunByName("gunName");
         assertFalse(result);
     }
-
-
 
 }

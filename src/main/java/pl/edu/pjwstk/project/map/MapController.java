@@ -36,6 +36,13 @@ public class MapController {
         return ResponseEntity.status(HttpStatus.OK).body(service.getLocations(latitude, longitude));
     }
 
+    /**
+     * check if user is located in Poland
+     *
+     * @param latitude the latitude of the user location
+     * @param longitude the longitude of the user location
+     * @return true if user is located in Poland, false otherwise
+     */
     @CrossOrigin
     @GetMapping("/isUserInPoland/{latitude}/{longitude}")
     public boolean isUserInPoland(
